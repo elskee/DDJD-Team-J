@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://32saxc7isthn"]
+
+[ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://cghc3nt2yr0yt" path="res://marble2.webp" id="2_r3fl7"]
+[ext_resource type="Texture2D" uid="uid://bofd1urvk3ac" path="res://marble.jpeg" id="3_a0tk4"]
+[ext_resource type="Texture2D" uid="uid://bs1xf68km61ht" path="res://wood.jpg" id="3_r3fl7"]
+[ext_resource type="Texture2D" uid="uid://4xg8ryufd08" path="res://nekoarc.png" id="5_jka67"]
+[ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
+[ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
+
+[sub_resource type="Environment" id="Environment_r3fl7"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+albedo_texture = ExtResource("5_jka67")
+
+[sub_resource type="QuadMesh" id="QuadMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
+albedo_texture = ExtResource("3_a0tk4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_a0tk4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
+albedo_texture = ExtResource("2_r3fl7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
+albedo_texture = ExtResource("3_a0tk4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iypd"]
+albedo_texture = ExtResource("3_r3fl7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_r3fl7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
+albedo_texture = ExtResource("3_r3fl7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jka67"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
+transparency = 1
+albedo_color = Color(0.5192469, 0.5192469, 0.5192469, 1)
+albedo_texture = ExtResource("5_jka67")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
+transparency = 1
+albedo_color = Color(3.8450508, 3.8450508, 3.8450508, 1)
+albedo_texture = ExtResource("5_jka67")
+
+[sub_resource type="QuadMesh" id="QuadMesh_imku0"]
+
+[node name="Node3D" type="Node3D" unique_id=576497279]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_noarx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1666380395]
+environment = SubResource("Environment_r3fl7")
+
+[node name="Room" type="Node3D" parent="." unique_id=1758893225]
+transform = Transform3D(-10, 0, -8.742278e-07, 0, 10, 0, 8.742278e-07, 0, -10, 0.0019361973, 0.017536402, 2.8648586)
+
+[node name="Wall1" type="MeshInstance3D" parent="Room" unique_id=2010352533]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_jka67")
+mesh = SubResource("QuadMesh_noarx")
+
+[node name="Wall2" type="MeshInstance3D" parent="Room" unique_id=547836882]
+transform = Transform3D(1.3113417e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113417e-07, -0.5012556, -0.0017536402, 0.46243513)
+material_override = SubResource("StandardMaterial3D_wc5p8")
+mesh = SubResource("QuadMesh_a0tk4")
+
+[node name="Wall3" type="MeshInstance3D" parent="Room" unique_id=158568202]
+transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -0.001936276, 0.017536404, 0.8991529)
+material_override = SubResource("StandardMaterial3D_i5arm")
+mesh = SubResource("QuadMesh_a0tk4")
+
+[node name="Wall4" type="MeshInstance3D" parent="Room" unique_id=1327407791]
+transform = Transform3D(-4.3711385e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 0.21948901, 0, 0.47603005)
+material_override = SubResource("StandardMaterial3D_4arys")
+mesh = SubResource("QuadMesh_a0tk4")
+
+[node name="Floor" type="MeshInstance3D" parent="Room" unique_id=1833027287]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.164896, -0.0009999999, 0.43156686)
+material_override = SubResource("StandardMaterial3D_6iypd")
+mesh = SubResource("QuadMesh_r3fl7")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Room" unique_id=555140884]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.24754433, 0.43056688, 0.43256682)
+material_override = SubResource("StandardMaterial3D_jsk3o")
+mesh = SubResource("QuadMesh_r3fl7")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
+transform = Transform3D(0.18490921, -0.006642494, -0.07592406, 0, 0.19923894, -0.017431147, 0.076214075, 0.0161159, 0.18420558, -1.659133, 2.5233548, 2.202212)
+fov = 76.25212
+near = 0.055
+
+[node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
+transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -1.619048, 2.3796403, 2.072506)
+material_override = SubResource("StandardMaterial3D_r3fl7")
+mesh = SubResource("QuadMesh_jka67")
+
+[node name="SleepyMeter" type="Label" parent="." unique_id=484902572]
+offset_left = 163.0
+offset_top = 33.0
+offset_right = 326.0
+offset_bottom = 128.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=197479472]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.6176777, 2.2584503, 2.7088184)
+omni_range = 1349.431
+omni_attenuation = 1.2
+
+[node name="FarNekoArc" type="MeshInstance3D" parent="." unique_id=1640415367]
+transform = Transform3D(2.8922863, 0, -0.79666847, 0, 3, 0, 0.79666847, 0, 2.8922863, 2.8296525, 1.0984787, -5.4650235)
+material_override = SubResource("StandardMaterial3D_tereu")
+mesh = SubResource("QuadMesh_cdqbm")
+
+[node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
+transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, 0.9513718)
+visible = false
+material_override = SubResource("StandardMaterial3D_cdqbm")
+mesh = SubResource("QuadMesh_imku0")
+
+[node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
+transform = Transform3D(0.1802154, -0.0077099637, -0.08638846, 0, 0.19920821, -0.017778859, 0.08673182, 0.016020121, 0.17950194, -1.1286589, 2.5923293, 2.5110843)
+light_energy = 6.723
+spot_range = 1100.353
+spot_attenuation = 0.92
+spot_angle = 56.5
+
+[node name="actionTimer" type="Timer" parent="." unique_id=1359930145]
+wait_time = 2.0
+autostart = true
+
+[node name="jumpscareTimer" type="Timer" parent="." unique_id=606595139]
+wait_time = 6.0
+
+[node name="NecoarcSound" type="AudioStreamPlayer3D" parent="." unique_id=1639069746]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+stream = ExtResource("6_wc5p8")
+volume_db = 40.077
+
+[node name="SaulSound" type="AudioStreamPlayer3D" parent="." unique_id=1575176655]
+stream = ExtResource("6_i5arm")
+volume_db = 13.0
+
+[connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
