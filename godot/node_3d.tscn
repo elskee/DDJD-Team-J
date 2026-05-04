@@ -5,8 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bofd1urvk3ac" path="res://marble.jpeg" id="3_a0tk4"]
 [ext_resource type="Texture2D" uid="uid://bs1xf68km61ht" path="res://wood.jpg" id="3_r3fl7"]
 [ext_resource type="Texture2D" uid="uid://4xg8ryufd08" path="res://nekoarc.png" id="5_jka67"]
+[ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
+[ext_resource type="Script" uid="uid://duhmdre82w88p" path="res://TV.gd" id="7_6iypd"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -40,11 +42,6 @@ albedo_texture = ExtResource("3_r3fl7")
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_jka67"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
-transparency = 1
-albedo_color = Color(0.5192469, 0.5192469, 0.5192469, 1)
-albedo_texture = ExtResource("5_jka67")
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 
@@ -114,12 +111,12 @@ offset_bottom = 128.0
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=197479472]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.6176777, 2.2584503, 2.7088184)
 omni_range = 1349.431
-omni_attenuation = 1.2
 
-[node name="FarNekoArc" type="MeshInstance3D" parent="." unique_id=1640415367]
-transform = Transform3D(2.8922863, 0, -0.79666847, 0, 3, 0, 0.79666847, 0, 2.8922863, 2.8296525, 1.0984787, -5.4650235)
-material_override = SubResource("StandardMaterial3D_tereu")
+[node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
+transform = Transform3D(2.8922863, 0, -0.79666847, 0, 3, 0, 0.79666847, 0, 2.8922863, 1.1914963, 1.2686099, -2.9411962)
+material_override = ExtResource("6_4arys")
 mesh = SubResource("QuadMesh_cdqbm")
+script = ExtResource("7_6iypd")
 
 [node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
 transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, 0.9513718)

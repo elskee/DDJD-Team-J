@@ -31,11 +31,7 @@ func _process(delta: float) -> void:
 		
 	if flashlight:
 		$Flashlight.visible = true
-		$FarNekoArc.visible = false
-		$jumpscareTimer.stop()
-		farNeko = false
-		nekoCooldown = true
-		currentSleepy -= 3*delta
+		$TV.setSafe()
 	else:
 		$Flashlight.visible = false
 		
@@ -50,10 +46,11 @@ func _process(delta: float) -> void:
 
 
 func _on_action_timer_timeout() -> void:
+	$TV.setDanger()
 	if (!farNeko and !nekoCooldown and eyesClosed):
 		if (randi_range(0,19)<nekoDifficulty):
 			farNeko = true
-			$FarNekoArc.visible = true
+			#$FarNekoArc.visible = true
 			$jumpscareTimer.start(0)
 			print("appeared")
 			$SaulSound.play(0)
@@ -64,8 +61,8 @@ func _on_action_timer_timeout() -> void:
 
 func _on_jumpscare_timer_timeout() -> void:
 	print("jumpscare")
-	isDead = true
-	$CloseNekoArc.visible = true
-	$NecoarcSound.play(0)
-	$jumpscareTimer.stop()
+	#isDead = true
+	#$CloseNekoArc.visible = true
+	#$NecoarcSound.play(0)
+	#$jumpscareTimer.stop()
 	pass # Replace with function body.
