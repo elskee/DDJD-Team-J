@@ -8,9 +8,8 @@
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
-[ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="Script" path="res://tv_controller.gd" id="7_6iypd"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
-
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -101,8 +100,7 @@ fov = 76.25212
 near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
-transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -2.1971705, 2.3796403, 3.3962846)
-visible = false
+transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -2.1971705, 2.6545136, 4.018287)
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -118,7 +116,7 @@ omni_range = 2974.912
 omni_attenuation = 1.1
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
-transform = Transform3D(2.8922865, 0, -0.7966685, 0, 3, 0, 0.7966685, 0, 2.8922865, -0.7735424, 3.8531368, -4.594047)
+transform = Transform3D(2.8922865, 0, -0.7966685, 0, 3, 0, 0.7966685, 0, 2.8922865, -0.7735424, 3.8531368, -6.4782104)
 material_override = ExtResource("6_4arys")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("7_6iypd")
