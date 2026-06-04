@@ -6,6 +6,7 @@ extends Node3D
 @onready var tv = $TV
 @onready var necoarc_sound = $NecoarcSound
 @onready var saul_sound = $SaulSound
+@onready var close_nekoarc = $CloseNekoArc
 
 var man_monster: Node3D
 var ghost_monster: Node3D
@@ -98,7 +99,7 @@ func _on_tv_corrupted():
 	print("TV corrupted - turn it off and on again!")
 
 func _on_tv_jumpscare():
-	GameManager.die()
+	trigger_jumpscare()
 	print("TV jumpscared you!")
 
 func _on_man_appeared():
@@ -117,8 +118,7 @@ func _on_man_turned_off_tv():
 	print("MAN turned off the TV")
 
 func _on_monster_jumpscare():
-	GameManager.die()
-	saul_sound.play()
+	trigger_jumpscare()
 	print("Monster jumpscared you!")
 
 func _on_ghost_appeared():
@@ -137,13 +137,19 @@ func _on_level_complete():
 	print("Level %s complete - you fell asleep!" % GameManager.current_level)
 	sleepy_label.text = "YOU FELL ASLEEP!"
 
+func trigger_jumpscare():
+	close_nekoarc.visible = true
+	saul_sound.play()
+	GameManager.die()
+	$jumpscareTimer.start()
+
+func _on_jumpscare_timer_timeout():
+	close_nekoarc.visible = false
+
 func _on_action_timer_timeout():
 	if GameManager.is_dead:
 		return
 	print("Action timer ticked")
-
-func _on_jumpscare_timer_timeout():
-	print("Jumpscare timer fired")
 
 func _on_game_over():
 	sleepy_label.text = "GAME OVER"
