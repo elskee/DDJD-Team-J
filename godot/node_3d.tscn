@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
-[ext_resource type="Script" uid="uid://duhmdre82w88p" path="res://TV.gd" id="7_6iypd"]
+[ext_resource type="Script" path="res://tv_controller.gd" id="7_6iypd"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0

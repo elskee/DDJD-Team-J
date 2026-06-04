@@ -1,68 +1,136 @@
 extends Node3D
 
-@export var maxSleepy : float = 30.0
-var currentSleepy : float = 0.0
-var eyesClosed : bool = false
-var flashlight : bool = false
-var farNeko : bool = false
-var nekoCooldown : bool = false
-var nekoDifficulty : int = 17
-var isDead : bool = false
+@onready var eyelid = $Eyelid
+@onready var flashlight_node = $Flashlight
+@onready var sleepy_label = $SleepyMeter
+@onready var tv = $TV
 
+var man_monster: Node3D
+var ghost_monster: Node3D
 
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("closeEye") and !isDead:
-		eyesClosed = true
+func _ready():
+	GameManager.reset()
+	create_monsters()
+	connect_tv_signals()
+	connect_monster_signals()
+	connect_game_signals()
+	tv.turn_on()
+
+func create_monsters():
+	man_monster = Node3D.new()
+	man_monster.name = "ManMonster"
+	man_monster.set_script(preload("res://man_monster.gd"))
+	add_child(man_monster)
+
+	ghost_monster = Node3D.new()
+	ghost_monster.name = "GhostMonster"
+	ghost_monster.set_script(preload("res://ghost_monster.gd"))
+	add_child(ghost_monster)
+
+func connect_tv_signals():
+	tv.became_corrupted.connect(_on_tv_corrupted)
+	tv.turned_on.connect(_on_tv_turned_on)
+	tv.turned_off.connect(_on_tv_turned_off)
+	tv.jumpscared.connect(_on_tv_jumpscare)
+
+func connect_monster_signals():
+	man_monster.appeared.connect(_on_man_appeared)
+	man_monster.left.connect(_on_man_left)
+	man_monster.turned_off_tv.connect(_on_man_turned_off_tv)
+	man_monster.jumpscared.connect(_on_monster_jumpscare)
+
+	ghost_monster.appeared.connect(_on_ghost_appeared)
+	ghost_monster.left.connect(_on_ghost_left)
+	ghost_monster.jumpscared.connect(_on_monster_jumpscare)
+
+func connect_game_signals():
+	GameManager.sleepiness_updated.connect(_on_sleepiness_updated)
+	GameManager.game_over.connect(_on_game_over)
+
+func _process(delta):
+	if GameManager.is_dead:
+		return
+
+	handle_input()
+	update_sleepiness(delta)
+	update_ui()
+
+func handle_input():
+	GameManager.eyes_closed = Input.is_action_pressed("closeEye")
+
+	if Input.is_action_just_pressed("useFlashlight"):
+		GameManager.toggle_flashlight()
+
+	if Input.is_action_just_pressed("toggleTV"):
+		if tv.is_on():
+			tv.turn_off()
+		else:
+			tv.turn_on()
+
+func update_sleepiness(delta):
+	if GameManager.eyes_closed:
+		var rate = 2.0
+		if tv.is_safe():
+			rate += 1.0
+		GameManager.sleepiness += rate * delta
 	else:
-		eyesClosed = false
-	
-	if Input.is_action_pressed("useFlashlight") and !isDead:
-		flashlight = true
-	else:
-		flashlight = false
-	
-	
-	if eyesClosed:
-		$Eyelid.visible = true
-		currentSleepy += 2*delta
-	else:
-		$Eyelid.visible = false
-		currentSleepy -= delta
-		
-	if flashlight:
-		$Flashlight.visible = true
-		$TV.setSafe()
-	else:
-		$Flashlight.visible = false
-		
-	if currentSleepy < 0:
-		currentSleepy = 0
-	if currentSleepy > maxSleepy:
-		currentSleepy = maxSleepy
-	
-		
-	$SleepyMeter.text = "Sleepyness: " + str(snapped(currentSleepy,0.1)) + "/" + str(maxSleepy)
-	
+		GameManager.sleepiness -= 1.0 * delta
 
+func update_ui():
+	eyelid.visible = GameManager.eyes_closed
+	flashlight_node.visible = GameManager.flashlight_on
+	sleepy_label.text = "Sleepiness: %s/%s" % [
+		str(snapped(GameManager.sleepiness, 0.1)),
+		str(GameManager.max_sleepiness)
+	]
 
-func _on_action_timer_timeout() -> void:
-	$TV.setDanger()
-	if (!farNeko and !nekoCooldown and eyesClosed):
-		if (randi_range(0,19)<nekoDifficulty):
-			farNeko = true
-			#$FarNekoArc.visible = true
-			$jumpscareTimer.start(0)
-			print("appeared")
-			$SaulSound.play(0)
-	nekoCooldown = false
-	print("timerTest")  
-	pass # Replace with function body.
+func _on_tv_turned_on():
+	pass
 
+func _on_tv_turned_off():
+	pass
 
-func _on_jumpscare_timer_timeout() -> void:
-	print("jumpscare")
-	#isDead = true
-	#$CloseNekoArc.visible = true
-	#$NecoarcSound.play(0)
-	#$jumpscareTimer.stop()
-	pass # Replace with function body.
+func _on_tv_corrupted():
+	print("TV corrupted - turn it off and on again!")
+
+func _on_tv_jumpscare():
+	GameManager.die()
+	print("TV jumpscared you!")
+
+func _on_man_appeared():
+	ghost_monster.blocked = true
+	if ghost_monster.is_present():
+		ghost_monster.force_leave()
+	print("MAN appeared - door creaks")
+
+func _on_man_left():
+	ghost_monster.blocked = false
+	ghost_monster.randomize_appear_time()
+	print("MAN left")
+
+func _on_man_turned_off_tv():
+	tv.turn_off()
+	print("MAN turned off the TV")
+
+func _on_monster_jumpscare():
+	GameManager.die()
+	print("Monster jumpscared you!")
+
+func _on_ghost_appeared():
+	print("GHOST appeared - everything goes quiet")
+
+func _on_ghost_left():
+	print("GHOST left")
+
+func _on_sleepiness_updated(value, max_value):
+	if value >= max_value and not GameManager.is_dead:
+		_on_level_complete()
+
+func _on_level_complete():
+	GameManager.is_dead = true
+	print("Level %s complete - you fell asleep!" % GameManager.current_level)
+	sleepy_label.text = "YOU FELL ASLEEP!"
+
+func _on_game_over():
+	sleepy_label.text = "GAME OVER"
+	print("Game Over!")
