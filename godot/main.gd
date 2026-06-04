@@ -4,6 +4,8 @@ extends Node3D
 @onready var flashlight_node = $Flashlight
 @onready var sleepy_label = $SleepyMeter
 @onready var tv = $TV
+@onready var necoarc_sound = $NecoarcSound
+@onready var saul_sound = $SaulSound
 
 var man_monster: Node3D
 var ghost_monster: Node3D
@@ -19,11 +21,13 @@ func _ready():
 func create_monsters():
 	man_monster = Node3D.new()
 	man_monster.name = "ManMonster"
+	man_monster.position = Vector3(1.19, 1.0, -3.5)
 	man_monster.set_script(preload("res://man_monster.gd"))
 	add_child(man_monster)
 
 	ghost_monster = Node3D.new()
 	ghost_monster.name = "GhostMonster"
+	ghost_monster.position = Vector3(1.19, 1.5, -3.3)
 	ghost_monster.set_script(preload("res://ghost_monster.gd"))
 	add_child(ghost_monster)
 
@@ -114,9 +118,11 @@ func _on_man_turned_off_tv():
 
 func _on_monster_jumpscare():
 	GameManager.die()
+	saul_sound.play()
 	print("Monster jumpscared you!")
 
 func _on_ghost_appeared():
+	necoarc_sound.play()
 	print("GHOST appeared - everything goes quiet")
 
 func _on_ghost_left():
@@ -130,6 +136,14 @@ func _on_level_complete():
 	GameManager.is_dead = true
 	print("Level %s complete - you fell asleep!" % GameManager.current_level)
 	sleepy_label.text = "YOU FELL ASLEEP!"
+
+func _on_action_timer_timeout():
+	if GameManager.is_dead:
+		return
+	print("Action timer ticked")
+
+func _on_jumpscare_timer_timeout():
+	print("Jumpscare timer fired")
 
 func _on_game_over():
 	sleepy_label.text = "GAME OVER"

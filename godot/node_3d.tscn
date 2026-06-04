@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
-[ext_resource type="Script" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -63,7 +63,7 @@ environment = SubResource("Environment_r3fl7")
 transform = Transform3D(-10, 0, -8.742278e-07, 0, 10, 0, 8.742278e-07, 0, -10, 0.0019361973, 0.017536402, 2.8648586)
 
 [node name="Wall1" type="MeshInstance3D" parent="Room" unique_id=2010352533]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -0.03153557, 0.03640566, 0.022418678)
 material_override = SubResource("StandardMaterial3D_jka67")
 mesh = SubResource("QuadMesh_noarx")
 
