@@ -4,3 +4,6 @@
 
 [resource]
 albedo_texture = ExtResource("1_6f7mo")
+roughness = 0.09
+emission_enabled = true
+emission_energy_multiplier = 1.2

@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://32saxc7isthn"]
 
 [ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_noarx"]
-[ext_resource type="Texture2D" uid="uid://cghc3nt2yr0yt" path="res://marble2.webp" id="2_r3fl7"]
-[ext_resource type="Texture2D" uid="uid://bofd1urvk3ac" path="res://marble.jpeg" id="3_a0tk4"]
-[ext_resource type="Texture2D" uid="uid://bs1xf68km61ht" path="res://wood.jpg" id="3_r3fl7"]
 [ext_resource type="Texture2D" uid="uid://4xg8ryufd08" path="res://nekoarc.png" id="5_jka67"]
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
@@ -14,30 +11,8 @@
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
 ambient_light_energy = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
-albedo_texture = ExtResource("5_jka67")
-
-[sub_resource type="QuadMesh" id="QuadMesh_noarx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wc5p8"]
-albedo_texture = ExtResource("3_a0tk4")
-
-[sub_resource type="QuadMesh" id="QuadMesh_a0tk4"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5arm"]
-albedo_texture = ExtResource("2_r3fl7")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4arys"]
-albedo_texture = ExtResource("3_a0tk4")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6iypd"]
-albedo_texture = ExtResource("3_r3fl7")
-
-[sub_resource type="QuadMesh" id="QuadMesh_r3fl7"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsk3o"]
-albedo_texture = ExtResource("3_r3fl7")
+glow_enabled = true
+glow_intensity = 1.05
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
 albedo_color = Color(0, 0, 0, 1)
@@ -60,47 +35,14 @@ script = ExtResource("1_noarx")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1666380395]
 environment = SubResource("Environment_r3fl7")
 
-[node name="Room" type="Node3D" parent="." unique_id=1758893225]
-transform = Transform3D(-10, 0, -8.742278e-07, 0, 10, 0, 8.742278e-07, 0, -10, 0.0019361973, 0.017536402, 2.8648586)
-visible = false
-
-[node name="Wall1" type="MeshInstance3D" parent="Room" unique_id=2010352533]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -0.034148138, 0, 0)
-material_override = SubResource("StandardMaterial3D_jka67")
-mesh = SubResource("QuadMesh_noarx")
-
-[node name="Wall2" type="MeshInstance3D" parent="Room" unique_id=547836882]
-transform = Transform3D(1.3113417e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113417e-07, -0.5012556, -0.0017536402, 0.46243513)
-material_override = SubResource("StandardMaterial3D_wc5p8")
-mesh = SubResource("QuadMesh_a0tk4")
-
-[node name="Wall3" type="MeshInstance3D" parent="Room" unique_id=158568202]
-transform = Transform3D(-1, 0, 2.6226834e-07, 0, 1, 0, -2.6226834e-07, 0, -1, -0.001936276, 0.017536404, 0.8991529)
-material_override = SubResource("StandardMaterial3D_i5arm")
-mesh = SubResource("QuadMesh_a0tk4")
-
-[node name="Wall4" type="MeshInstance3D" parent="Room" unique_id=1327407791]
-transform = Transform3D(-4.3711385e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711385e-08, 0.21948901, 0, 0.47603005)
-material_override = SubResource("StandardMaterial3D_4arys")
-mesh = SubResource("QuadMesh_a0tk4")
-
-[node name="Floor" type="MeshInstance3D" parent="Room" unique_id=1833027287]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.164896, -0.0009999999, 0.43156686)
-material_override = SubResource("StandardMaterial3D_6iypd")
-mesh = SubResource("QuadMesh_r3fl7")
-
-[node name="Ceiling" type="MeshInstance3D" parent="Room" unique_id=555140884]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -0.24754433, 0.43056688, 0.43256682)
-material_override = SubResource("StandardMaterial3D_jsk3o")
-mesh = SubResource("QuadMesh_r3fl7")
-
 [node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
 transform = Transform3D(0.18490921, -0.0066424953, -0.07592406, 0, 0.19923894, -0.017431153, 0.076214075, 0.016115902, 0.18420558, -2.4148395, 2.8069577, 4.041929)
+cull_mask = 1047553
 fov = 76.25212
 near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
-transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -2.1971705, 2.6545136, 4.018287)
+transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.1971703, 2.6545136, 4.018287)
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -116,7 +58,7 @@ omni_range = 2974.912
 omni_attenuation = 1.1
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
-transform = Transform3D(2.8922865, 0, -0.7966685, 0, 3, 0, 0.7966685, 0, 2.8922865, -0.7735424, 3.8531368, -6.4782104)
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
 material_override = ExtResource("6_4arys")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("7_6iypd")
