@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
+
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -61,9 +63,10 @@ environment = SubResource("Environment_r3fl7")
 
 [node name="Room" type="Node3D" parent="." unique_id=1758893225]
 transform = Transform3D(-10, 0, -8.742278e-07, 0, 10, 0, 8.742278e-07, 0, -10, 0.0019361973, 0.017536402, 2.8648586)
+visible = false
 
 [node name="Wall1" type="MeshInstance3D" parent="Room" unique_id=2010352533]
-transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -0.03153557, 0.03640566, 0.022418678)
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, -0.034148138, 0, 0)
 material_override = SubResource("StandardMaterial3D_jka67")
 mesh = SubResource("QuadMesh_noarx")
 
@@ -93,12 +96,13 @@ material_override = SubResource("StandardMaterial3D_jsk3o")
 mesh = SubResource("QuadMesh_r3fl7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
-transform = Transform3D(0.18490921, -0.006642494, -0.07592406, 0, 0.19923894, -0.017431147, 0.076214075, 0.0161159, 0.18420558, -1.659133, 2.5233548, 2.202212)
+transform = Transform3D(0.18490921, -0.0066424953, -0.07592406, 0, 0.19923894, -0.017431153, 0.076214075, 0.016115902, 0.18420558, -2.4148395, 2.8069577, 4.041929)
 fov = 76.25212
 near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
-transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -1.619048, 2.3796403, 2.072506)
+transform = Transform3D(0.8241262, -0.09835541, -0.55780125, 0, 0.9848078, -0.17364818, 0.56640625, 0.14310801, 0.8116059, -2.1971705, 2.3796403, 3.3962846)
+visible = false
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -109,11 +113,12 @@ offset_right = 326.0
 offset_bottom = 128.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=197479472]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.6176777, 2.2584503, 2.7088184)
-omni_range = 1349.431
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.95912, 3.5812237, 4.412452)
+omni_range = 2974.912
+omni_attenuation = 1.1
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
-transform = Transform3D(2.8922863, 0, -0.79666847, 0, 3, 0, 0.79666847, 0, 2.8922863, 1.1914963, 1.2686099, -2.9411962)
+transform = Transform3D(2.8922865, 0, -0.7966685, 0, 3, 0, 0.7966685, 0, 2.8922865, -0.7735424, 3.8531368, -4.594047)
 material_override = ExtResource("6_4arys")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("7_6iypd")
@@ -125,7 +130,7 @@ material_override = SubResource("StandardMaterial3D_cdqbm")
 mesh = SubResource("QuadMesh_imku0")
 
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
-transform = Transform3D(0.1802154, -0.0077099637, -0.08638846, 0, 0.19920821, -0.017778859, 0.08673182, 0.016020121, 0.17950194, -1.1286589, 2.5923293, 2.5110843)
+transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
 light_energy = 6.723
 spot_range = 1100.353
 spot_attenuation = 0.92
@@ -146,6 +151,9 @@ volume_db = 40.077
 [node name="SaulSound" type="AudioStreamPlayer3D" parent="." unique_id=1575176655]
 stream = ExtResource("6_i5arm")
 volume_db = 13.0
+
+[node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7239821, 1.360424, -2.1797636)
 
 [connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
