@@ -10,8 +10,8 @@ var appear_timer: float = 0.0
 var next_appear_time: float = 0.0
 
 @export var max_suspicion: float = 100.0
-@export var appear_delay_min: float = 40.0
-@export var appear_delay_max: float = 60.0
+@export var appear_delay_min: float = 5.0
+@export var appear_delay_max: float = 15.0
 @export var tv_off_delay: float = 5.0
 
 signal appeared()

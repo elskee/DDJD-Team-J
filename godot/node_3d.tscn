@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
-[ext_resource type="Script" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
@@ -55,13 +55,19 @@ offset_bottom = 128.0
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=197479472]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.95912, 3.5812237, 4.412452)
 omni_range = 2974.912
-omni_attenuation = 1.1
+omni_attenuation = 1.25
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
 transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
 material_override = ExtResource("6_4arys")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("7_6iypd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TV" unique_id=1508721701]
+transform = Transform3D(0.044444446, 0, 0, 0, 0.06666667, 0, 0, 0, 0.06666667, 0, 0.20874536, 0.35088062)
+light_energy = 2.322
+omni_range = 68.144
+omni_attenuation = 1.946
 
 [node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
 transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, 0.9513718)
@@ -71,6 +77,7 @@ mesh = SubResource("QuadMesh_imku0")
 
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
 transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
+visible = false
 light_energy = 6.723
 spot_range = 1100.353
 spot_attenuation = 0.92

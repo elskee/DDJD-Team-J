@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbwsyox7lls2g"]
+
+[ext_resource type="Texture2D" uid="uid://dypdm301rklfu" path="res://safeTV.png" id="1_8fu8u"]
+
+[resource]
+albedo_texture = ExtResource("1_8fu8u")

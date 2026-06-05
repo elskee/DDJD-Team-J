@@ -3,7 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dea353f0b1lk5" path="res://dangerTV.png" id="1_6f7mo"]
 
 [resource]
+albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)
 albedo_texture = ExtResource("1_6f7mo")
-roughness = 0.09
 emission_enabled = true
-emission_energy_multiplier = 1.2
+emission = Color(0.015686275, 0.015686275, 0, 1)
+emission_energy_multiplier = 0.2
+emission_texture = ExtResource("1_6f7mo")
