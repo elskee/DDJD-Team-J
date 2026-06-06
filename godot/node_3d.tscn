@@ -44,13 +44,13 @@ script = ExtResource("1_noarx")
 environment = SubResource("Environment_r3fl7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
-transform = Transform3D(0.18490921, -0.0066424953, -0.07592406, 0, 0.19923894, -0.017431153, 0.076214075, 0.016115902, 0.18420558, -2.4148395, 2.8069577, 4.041929)
+transform = Transform3D(0.18490921, -0.0066424953, -0.07592406, 0, 0.19923894, -0.017431153, 0.076214075, 0.016115902, 0.18420558, -2.4148395, 3.0036228, 3.4509676)
 cull_mask = 1047553
-fov = 76.25212
+fov = 60.0
 near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
-transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.1971703, 2.6545136, 4.018287)
+transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 2.8272634, 3.425144)
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -78,13 +78,13 @@ omni_range = 68.144
 omni_attenuation = 1.946
 
 [node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
-transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, 0.9513718)
+transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, -3.620524)
 visible = false
 material_override = SubResource("StandardMaterial3D_cdqbm")
 mesh = SubResource("QuadMesh_imku0")
 
 [node name="Man" type="MeshInstance3D" parent="." unique_id=1541834509]
-transform = Transform3D(1.9454063, 0, -0.46410686, 0, 3, 0, 0.46410686, 0, 1.9454063, -1.2241234, 3.0316436, -0.14017916)
+transform = Transform3D(1.9454063, 0, -0.46410686, 0, 3, 0, 0.46410686, 0, 1.9454063, -1.2241234, 3.0316436, -0.0015725136)
 material_override = SubResource("StandardMaterial3D_tereu")
 mesh = SubResource("QuadMesh_imku0")
 script = ExtResource("5_4arys")
