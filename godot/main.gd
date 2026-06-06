@@ -4,12 +4,11 @@ extends Node3D
 @onready var flashlight_node = $Flashlight
 @onready var sleepy_label = $SleepyMeter
 @onready var tv = $TV
-@onready var necoarc_sound = $NecoarcSound
+@onready var jumpscare_sound = $JumpscareSound
 @onready var saul_sound = $SaulSound
 @onready var close_nekoarc = $CloseNekoArc
-
-var man_monster: Node3D
-var ghost_monster: Node3D
+@onready var man_monster = $Man
+@onready var ghost_monster = $Ghost
 
 func _ready():
 	GameManager.reset()
@@ -20,17 +19,18 @@ func _ready():
 	tv.turn_on()
 
 func create_monsters():
-	man_monster = Node3D.new()
-	man_monster.name = "ManMonster"
-	man_monster.position = Vector3(1.19, 1.0, -3.5)
-	man_monster.set_script(preload("res://man_monster.gd"))
-	add_child(man_monster)
+	pass
+	#man_monster = Node3D.new()
+	#man_monster.name = "ManMonster"
+	#man_monster.position = Vector3(1.19, 1.0, -3.5)
+	#man_monster.set_script(preload("res://monster_man.gd"))
+	#add_child(man_monster)
 
-	ghost_monster = Node3D.new()
-	ghost_monster.name = "GhostMonster"
-	ghost_monster.position = Vector3(1.19, 1.5, -3.3)
-	ghost_monster.set_script(preload("res://ghost_monster.gd"))
-	add_child(ghost_monster)
+	#ghost_monster = Node3D.new()
+	#ghost_monster.name = "GhostMonster"
+	#ghost_monster.position = Vector3(1.19, 1.5, -3.3)
+	#ghost_monster.set_script(preload("res://monster_ghost.gd"))
+	#add_child(ghost_monster)
 
 func connect_tv_signals():
 	tv.became_corrupted.connect(_on_tv_corrupted)
@@ -122,7 +122,6 @@ func _on_monster_jumpscare():
 	print("Monster jumpscared you!")
 
 func _on_ghost_appeared():
-	necoarc_sound.play()
 	print("GHOST appeared - everything goes quiet")
 
 func _on_ghost_left():
@@ -138,8 +137,10 @@ func _on_level_complete():
 	sleepy_label.text = "YOU FELL ASLEEP!"
 
 func trigger_jumpscare():
-	close_nekoarc.visible = true
-	saul_sound.play()
+	#close_nekoarc.visible = true
+	if GameManager.is_dead != true:
+		jumpscare_sound.play()
+	GameManager.is_dead = true
 	GameManager.die()
 	$jumpscareTimer.start()
 

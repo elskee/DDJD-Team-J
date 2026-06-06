@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://b3o1eg7hoi6hm" path="res://monster_ghost.gd" id="6_6iypd"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://assets/audio/Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://bwolal58mg858" path="res://assets/audio/7_jumpscareidea.mp3" id="6_jsk3o"]
-[ext_resource type="Texture2D" uid="uid://8j7sp6ysynm6" path="res://assets/images/ghost.png" id="6_tereu"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
 
@@ -43,12 +42,6 @@ albedo_texture = SubResource("CompressedTexture2D_6iypd")
 transparency = 1
 albedo_texture = ExtResource("4_jsk3o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imku0"]
-transparency = 1
-albedo_texture = ExtResource("6_tereu")
-
-[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
-
 [node name="Node3D" type="Node3D" unique_id=576497279]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_noarx")
@@ -57,13 +50,13 @@ script = ExtResource("1_noarx")
 environment = SubResource("Environment_r3fl7")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
-transform = Transform3D(0.17891985, -0.007789448, -0.089033775, -4.542713e-10, 0.19923893, -0.017431153, 0.08937385, 0.015593894, 0.17823899, -2.4148395, 3.0036228, 3.4509676)
+transform = Transform3D(0.18490921, -0.0066424953, -0.07592406, 0, 0.19923894, -0.017431153, 0.076214075, 0.016115902, 0.18420558, -2.4148395, 3.0036228, 3.4509676)
 cull_mask = 1047553
 fov = 60.0
 near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
-transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 3.044545, 3.425144)
+transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 2.8272634, 3.425144)
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -103,9 +96,6 @@ mesh = SubResource("QuadMesh_imku0")
 script = ExtResource("5_4arys")
 
 [node name="Ghost" type="MeshInstance3D" parent="." unique_id=489280104]
-transform = Transform3D(0.4678219, 0, -0.88382286, 0, 1, 0, 0.88382286, 0, 0.4678219, 1.1772101, 3.1524732, 1.2580055)
-material_override = SubResource("StandardMaterial3D_imku0")
-mesh = SubResource("QuadMesh_wlxy5")
 script = ExtResource("6_6iypd")
 
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
@@ -123,7 +113,7 @@ autostart = true
 [node name="jumpscareTimer" type="Timer" parent="." unique_id=606595139]
 wait_time = 6.0
 
-[node name="JumpscareSound" type="AudioStreamPlayer3D" parent="." unique_id=1639069746]
+[node name="NecoarcSound" type="AudioStreamPlayer3D" parent="." unique_id=1639069746]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 stream = ExtResource("6_jsk3o")
 volume_db = -0.234

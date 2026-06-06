@@ -8,9 +8,9 @@ var appear_timer: float = 0.0
 var next_appear_time: float = 0.0
 var blocked: bool = false
 
-@export var appear_delay_min: float = 5.0
-@export var appear_delay_max: float = 15.0
-@export var jumpscare_after: float = 8.0
+@export var appear_delay_min: float = 2.0
+@export var appear_delay_max: float = 5.0
+@export var jumpscare_after: float = 218.0
 
 signal appeared()
 signal left()
@@ -19,18 +19,6 @@ signal jumpscared()
 func _ready():
 	var mesh_instance = MeshInstance3D.new()
 	mesh_instance.name = "Mesh"
-	var sphere = SphereMesh.new()
-	sphere.radius = 0.6
-	sphere.height = 1.2
-	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(0.6, 0.8, 1.0, 0.4)
-	material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	material.emission_enabled = true
-	material.emission = Color(0.4, 0.6, 1.0)
-	material.emission_energy_multiplier = 0.3
-	sphere.material = material
-	mesh_instance.mesh = sphere
-	add_child(mesh_instance)
 	visible = false
 	randomize_appear_time()
 
