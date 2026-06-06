@@ -31,6 +31,9 @@ func _process(delta):
 		if appear_timer >= next_appear_time:
 			try_appear()
 		return
+	
+	if GameManager.flashlight_on:
+		leave()
 
 	time_present += delta
 	if time_present >= jumpscare_after:

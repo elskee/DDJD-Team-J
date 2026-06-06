@@ -138,6 +138,7 @@ func _on_level_complete():
 
 func trigger_jumpscare():
 	#close_nekoarc.visible = true
+	eyelid.visible = false
 	if GameManager.is_dead != true:
 		jumpscare_sound.play()
 	GameManager.is_dead = true
