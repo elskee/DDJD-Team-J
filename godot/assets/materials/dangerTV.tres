@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://cqsupgcddnwmw"]
 
-[ext_resource type="Texture2D" uid="uid://dea353f0b1lk5" path="res://dangerTV.png" id="1_6f7mo"]
+[ext_resource type="Texture2D" uid="uid://dea353f0b1lk5" path="res://assets/images/dangerTV.png" id="1_6f7mo"]
 
 [resource]
 albedo_color = Color(1.5720325, 1.5720325, 1.5720325, 1)

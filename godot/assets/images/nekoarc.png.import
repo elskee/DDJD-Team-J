@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bofd1urvk3ac"
-path.s3tc="res://.godot/imported/marble.jpeg-de8e6487ea19f05a51e72599d37e2d70.s3tc.ctex"
+uid="uid://4xg8ryufd08"
+path.s3tc="res://.godot/imported/nekoarc.png-beff14072800c84cee72e9fae3de0122.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://marble.jpeg"
-dest_files=["res://.godot/imported/marble.jpeg-de8e6487ea19f05a51e72599d37e2d70.s3tc.ctex"]
+source_file="res://assets/images/nekoarc.png"
+dest_files=["res://.godot/imported/nekoarc.png-beff14072800c84cee72e9fae3de0122.s3tc.ctex"]
 
 [params]
 

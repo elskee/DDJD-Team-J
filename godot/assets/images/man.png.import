@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs1xf68km61ht"
-path.s3tc="res://.godot/imported/wood.jpg-1829acd2d97a5721bb28a2821883856e.s3tc.ctex"
+uid="uid://gq2huvvwhgp7"
+path.s3tc="res://.godot/imported/man.png-a902d0b9362ab6c19cf2091a08e4c541.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://wood.jpg"
-dest_files=["res://.godot/imported/wood.jpg-1829acd2d97a5721bb28a2821883856e.s3tc.ctex"]
+source_file="res://assets/images/man.png"
+dest_files=["res://.godot/imported/man.png-a902d0b9362ab6c19cf2091a08e4c541.s3tc.ctex"]
 
 [params]
 

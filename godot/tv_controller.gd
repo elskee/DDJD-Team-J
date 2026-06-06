@@ -14,8 +14,8 @@ var can_turn_on: bool = true
 @export var jumpscare_after: float = 5.0
 @export var reset_off_time: float = 3.0
 
-var safe_mat = preload("res://safeTV.tres")
-var danger_mat = preload("res://dangerTV.tres")
+var safe_mat = preload("res://assets/materials/safeTV.tres")
+var danger_mat = preload("res://assets/materials/dangerTV.tres")
 
 signal turned_on()
 signal turned_off()

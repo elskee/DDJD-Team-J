@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dea353f0b1lk5"
-path.s3tc="res://.godot/imported/dangerTV.png-09c6f80e91c61b3d5de16904f46c573c.s3tc.ctex"
+uid="uid://dypdm301rklfu"
+path.s3tc="res://.godot/imported/safeTV.png-612e452552340b72876e6fd5a011019d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://dangerTV.png"
-dest_files=["res://.godot/imported/dangerTV.png-09c6f80e91c61b3d5de16904f46c573c.s3tc.ctex"]
+source_file="res://assets/images/safeTV.png"
+dest_files=["res://.godot/imported/safeTV.png-612e452552340b72876e6fd5a011019d.s3tc.ctex"]
 
 [params]
 

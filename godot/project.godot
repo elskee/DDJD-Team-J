@@ -13,11 +13,14 @@ config_version=5
 config/name="Insomnia"
 run/main_scene="uid://32saxc7isthn"
 config/features=PackedStringArray("4.6", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*res://game_manager.gd"
+
+[display]
+
+window/size/borderless=true
 
 [input]
 
