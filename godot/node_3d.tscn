@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://32saxc7isthn"]
 
 [ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_noarx"]
-[ext_resource type="Texture2D" uid="uid://4xg8ryufd08" path="res://nekoarc.png" id="5_jka67"]
+[ext_resource type="Texture2D" uid="uid://gq2huvvwhgp7" path="res://man.png" id="4_jsk3o"]
+[ext_resource type="Script" uid="uid://cxmjq304ysetl" path="res://man_monster.gd" id="5_4arys"]
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://Saul.mp3" id="6_i5arm"]
 [ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://necoarc.mp3" id="6_wc5p8"]
@@ -21,12 +22,19 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6iypd"]
+load_path = "res://.godot/imported/man.png-092256092d9d6123ce93678bdf1d415b.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
 transparency = 1
 albedo_color = Color(3.8450508, 3.8450508, 3.8450508, 1)
-albedo_texture = ExtResource("5_jka67")
+albedo_texture = SubResource("CompressedTexture2D_6iypd")
 
 [sub_resource type="QuadMesh" id="QuadMesh_imku0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
+transparency = 1
+albedo_texture = ExtResource("4_jsk3o")
 
 [node name="Node3D" type="Node3D" unique_id=576497279]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
@@ -75,6 +83,12 @@ visible = false
 material_override = SubResource("StandardMaterial3D_cdqbm")
 mesh = SubResource("QuadMesh_imku0")
 
+[node name="Man" type="MeshInstance3D" parent="." unique_id=1541834509]
+transform = Transform3D(1.9454063, 0, -0.46410686, 0, 3, 0, 0.46410686, 0, 1.9454063, -1.2241234, 3.0316436, -0.14017916)
+material_override = SubResource("StandardMaterial3D_tereu")
+mesh = SubResource("QuadMesh_imku0")
+script = ExtResource("5_4arys")
+
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
 transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
 visible = false
@@ -100,7 +114,7 @@ stream = ExtResource("6_i5arm")
 volume_db = 13.0
 
 [node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7239821, 1.360424, -2.1797636)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
 
 [connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
