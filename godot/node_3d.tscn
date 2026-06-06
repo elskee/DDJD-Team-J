@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cxmjq304ysetl" path="res://man_monster.gd" id="5_4arys"]
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://assets/materials/dangerTV.tres" id="6_4arys"]
 [ext_resource type="AudioStream" uid="uid://bj0hswm8wjlsj" path="res://assets/audio/Saul.mp3" id="6_i5arm"]
-[ext_resource type="AudioStream" uid="uid://dpxt0i8734nu4" path="res://assets/audio/necoarc.mp3" id="6_wc5p8"]
+[ext_resource type="AudioStream" uid="uid://bwolal58mg858" path="res://assets/audio/7_jumpscareidea.mp3" id="6_jsk3o"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
 
@@ -111,8 +111,8 @@ wait_time = 6.0
 
 [node name="NecoarcSound" type="AudioStreamPlayer3D" parent="." unique_id=1639069746]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-stream = ExtResource("6_wc5p8")
-volume_db = 40.077
+stream = ExtResource("6_jsk3o")
+volume_db = 6.588
 
 [node name="SaulSound" type="AudioStreamPlayer3D" parent="." unique_id=1575176655]
 stream = ExtResource("6_i5arm")
