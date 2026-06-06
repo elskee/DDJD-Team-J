@@ -14,6 +14,9 @@ var can_turn_on: bool = true
 @export var jumpscare_after: float = 5.0
 @export var reset_off_time: float = 3.0
 
+@onready var tv_on_sound = $"../TVOn"
+@onready var tv_off_sound = $"../TVOff"
+
 var safe_mat = preload("res://assets/materials/safeTV.tres")
 var danger_mat = preload("res://assets/materials/dangerTV.tres")
 
@@ -53,6 +56,7 @@ func turn_on():
 		corruption_progress = 0.0
 		visible = true
 		material_override = safe_mat
+		tv_on_sound.playing = true
 		turned_on.emit()
 
 func turn_off():
@@ -63,6 +67,7 @@ func turn_off():
 	corrupted_duration = 0.0
 	flickering = false
 	turned_off.emit()
+	tv_off_sound.playing = true
 	if not can_turn_on:
 		off_time = 0.0
 

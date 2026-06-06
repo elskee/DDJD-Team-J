@@ -14,6 +14,9 @@ var next_appear_time: float = 0.0
 @export var appear_delay_max: float = 15.0
 @export var tv_off_delay: float = 5.0
 
+@onready var door_enter_sound = $"../DoorEnter"
+@onready var door_exit_sound = $"../DoorExit"
+
 signal appeared()
 signal left()
 signal turned_off_tv()
@@ -70,6 +73,7 @@ func appear():
 	time_present = 0.0
 	tv_turned_off_already = false
 	visible = true
+	door_enter_sound.playing = true
 	GameManager.man_active = true
 	appeared.emit()
 
@@ -78,6 +82,7 @@ func leave():
 	visible = false
 	suspicion = 0.0
 	GameManager.man_active = false
+	door_exit_sound.playing = true
 	left.emit()
 	randomize_appear_time()
 
