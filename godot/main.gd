@@ -12,25 +12,17 @@ extends Node3D
 
 func _ready():
 	GameManager.reset()
-	create_monsters()
+	set_difficulty()
 	connect_tv_signals()
 	connect_monster_signals()
 	connect_game_signals()
 	tv.turn_on()
 
-func create_monsters():
+func set_difficulty(ghost_diff = 1, man_diff = 1, tv_diff = 1):
+	#$Ghost.
+	
 	pass
-	#man_monster = Node3D.new()
-	#man_monster.name = "ManMonster"
-	#man_monster.position = Vector3(1.19, 1.0, -3.5)
-	#man_monster.set_script(preload("res://monster_man.gd"))
-	#add_child(man_monster)
-
-	#ghost_monster = Node3D.new()
-	#ghost_monster.name = "GhostMonster"
-	#ghost_monster.position = Vector3(1.19, 1.5, -3.3)
-	#ghost_monster.set_script(preload("res://monster_ghost.gd"))
-	#add_child(ghost_monster)
+	
 
 func connect_tv_signals():
 	tv.became_corrupted.connect(_on_tv_corrupted)

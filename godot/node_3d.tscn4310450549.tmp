@@ -111,10 +111,6 @@ material_override = SubResource("StandardMaterial3D_imku0")
 mesh = SubResource("QuadMesh_wlxy5")
 script = ExtResource("6_6iypd")
 
-[node name="actionTimer" type="Timer" parent="Ghost" unique_id=1574103185]
-
-[node name="jumpscareTimer" type="Timer" parent="Ghost" unique_id=780300370]
-
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
 transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
 visible = false
