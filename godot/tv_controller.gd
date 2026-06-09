@@ -86,3 +86,5 @@ func is_on() -> bool:
 
 func is_safe() -> bool:
 	return state == State.SAFE
+
+	

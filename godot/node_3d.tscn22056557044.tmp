@@ -108,6 +108,10 @@ transform = Transform3D(1.9454063, 0, -0.46410686, 0, 3, 0, 0.46410686, 0, 1.945
 material_override = SubResource("StandardMaterial3D_tereu")
 mesh = SubResource("QuadMesh_imku0")
 script = ExtResource("5_4arys")
+max_suspicion = null
+appear_delay_min = null
+appear_delay_max = null
+tv_off_delay = null
 
 [node name="actionTimer" type="Timer" parent="Man" unique_id=1379425969]
 

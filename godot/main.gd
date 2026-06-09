@@ -15,6 +15,7 @@ func _ready():
 	set_difficulty()
 	connect_tv_signals()
 	connect_monster_signals()
+	connect_ghost_signals()
 	connect_game_signals()
 	tv.turn_on()
 
@@ -35,7 +36,8 @@ func connect_monster_signals():
 	man_monster.left.connect(_on_man_left)
 	man_monster.turned_off_tv.connect(_on_man_turned_off_tv)
 	man_monster.jumpscared.connect(_on_monster_jumpscare)
-
+	
+func connect_ghost_signals():
 	ghost_monster.appeared.connect(_on_ghost_appeared)
 	ghost_monster.left.connect(_on_ghost_left)
 	ghost_monster.jumpscared.connect(_on_monster_jumpscare)
@@ -97,16 +99,15 @@ func _on_tv_jumpscare():
 func _on_man_appeared():
 	ghost_monster.blocked = true
 	if ghost_monster.is_present():
-		ghost_monster.force_leave()
+		ghost_monster.leave()
 	print("MAN appeared - door creaks")
 
 func _on_man_left():
 	ghost_monster.blocked = false
-	ghost_monster.randomize_appear_time()
 	print("MAN left")
 
 func _on_man_turned_off_tv():
-	tv.turn_off()
+	tv.turn_off()      
 	print("MAN turned off the TV")
 
 func _on_monster_jumpscare():
