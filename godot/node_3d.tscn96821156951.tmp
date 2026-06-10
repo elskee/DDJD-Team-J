@@ -111,6 +111,8 @@ script = ExtResource("5_4arys")
 
 [node name="actionTimer" type="Timer" parent="Man" unique_id=1379425969]
 
+[node name="leaveTimer" type="Timer" parent="Man" unique_id=444096615]
+
 [node name="Ghost" type="MeshInstance3D" parent="." unique_id=489280104]
 transform = Transform3D(0.4678219, 0, -0.88382286, 0, 1, 0, 0.88382286, 0, 0.4678219, 1.1772101, 3.1524732, 1.2580055)
 material_override = SubResource("StandardMaterial3D_imku0")
@@ -163,8 +165,7 @@ volume_db = 13.0
 [node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
 
-[connection signal="timeout" from="Man/actionTimer" to="Man" method="compute_action"]
-[connection signal="timeout" from="Ghost/actionTimer" to="Ghost" method="_on_action_timer_timeout"]
+[connection signal="timeout" from="Ghost/actionTimer" to="Ghost" method="compute_action"]
 [connection signal="timeout" from="Ghost/jumpscareTimer" to="Ghost" method="jumpscare"]
 [connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]

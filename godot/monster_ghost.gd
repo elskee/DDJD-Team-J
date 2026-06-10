@@ -42,7 +42,7 @@ func appear():
 	appeared.emit()
 
 func leave():
-	if current_state == State.PRESENT:
+	if current_state == State.HIDDEN:
 		return
 	current_state = State.HIDDEN
 	visible = false
@@ -63,3 +63,7 @@ func jumpscare() -> void:
 	if GameManager.is_dead or current_state == State.HIDDEN or blocked:
 		return
 	jumpscared.emit()
+
+
+func _on_action_timer_timeout() -> void:
+	pass # Replace with function body.

@@ -12,6 +12,7 @@ var actionChance = 1
 var suspicion: float = 0.0
 var turned_off_tv_once = false
 var suspicionMultiplier = 1
+var internal_difficulty = 1
 
 @onready var actionTimer = $actionTimer
 @onready var leaveTimer = $leaveTimer
@@ -25,57 +26,55 @@ signal turned_off_tv()
 
 func _ready():
 	visible = false
-	set_difficulty()
+	set_difficulty(20)
+	actionTimer.start()
 
 func _process(delta):
 	if GameManager.is_dead:
-		return
+		return                     
 	if GameManager.eyes_closed:
-		suspicion = maxf(suspicion - 15.0 * delta, 0.0)
+		suspicion = maxf(suspicion - 25.0 * delta * (1.0/suspicionMultiplier), 0.0)
 	else:
-		suspicion = minf(suspicion + 10.0 * delta * suspicionMultiplier, max_suspicion)
+		suspicion = minf(suspicion + 15.0 * delta * suspicionMultiplier, max_suspicion)
 	
 	if GameManager.flashlight_on:
 		suspicion = minf(suspicion + 25.0 * delta * suspicionMultiplier, max_suspicion)
 	
 	if suspicion >= max_suspicion:
-		jumpscared.emit()
-		return
+		jumpscare()
 
 	if suspicion <= 0.0:
 		leave()
-		return
 
 	if not turned_off_tv_once and current_state == State.PRESENT:
 		turned_off_tv_once = true
 		turned_off_tv.emit()
 
 func set_difficulty(difficulty = 1.0):
-	actionTimer.wait_time = 5.0 - (difficulty * 0.5) #15 -> 5
+	internal_difficulty = difficulty
+	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
 	actionChance = 0.5 + difficulty/40.0 #50% -> 100%
 	suspicionMultiplier = 1.0+difficulty/20 #1->2
 
 func appear():
 	if current_state == State.PRESENT or GameManager.is_dead:
 		return
-	suspicion = max_suspicion * 0.3
+	suspicion = max_suspicion * 0.3 * (1.0+internal_difficulty/20.0                ) 
 	current_state = State.PRESENT
 	visible = true
 	door_enter_sound.playing = true
 	GameManager.man_active = true
-	leaveTimer.start()
 	actionTimer.stop()
 	appeared.emit()
 
 func leave():
-	if current_state == State.PRESENT:
+	if current_state == State.HIDDEN:
 		return
 	current_state = State.HIDDEN
 	suspicion = 0.0
 	visible = false
 	GameManager.man_active = false
 	actionTimer.start()
-	leaveTimer.stop()
 	left.emit()
 	
 
