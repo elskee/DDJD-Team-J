@@ -163,8 +163,10 @@ volume_db = 13.0
 [node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
 
+[connection signal="timeout" from="TV/actionTimer" to="TV" method="compute_action"]
+[connection signal="timeout" from="TV/jumpscareTimer" to="TV" method="jumpscare"]
 [connection signal="timeout" from="Man/actionTimer" to="Man" method="compute_action"]
-[connection signal="timeout" from="Ghost/actionTimer" to="Ghost" method="_on_action_timer_timeout"]
+[connection signal="timeout" from="Ghost/actionTimer" to="Ghost" method="compute_action"]
 [connection signal="timeout" from="Ghost/jumpscareTimer" to="Ghost" method="jumpscare"]
 [connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]

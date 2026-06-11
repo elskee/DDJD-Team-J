@@ -19,8 +19,11 @@ signal jumpscared()
 func _ready():
 	visible = false
 	set_difficulty()
+	actionTimer.start()
 
 func _process(delta):
+	print(str(actionTimer.time_left))
+	
 	if GameManager.is_dead:
 		return
 	
@@ -28,13 +31,18 @@ func _process(delta):
 		leave()
 
 func set_difficulty(difficulty = 1.0):
-	actionTimer.wait_time = 5.0 - (difficulty * 0.5) #15 -> 5
+	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
+	actionTimer.start()
 	actionChance = 0.5 + difficulty/40.0 #50% -> 100%
 	jumpscareTimer.wait_time = 5.0 - difficulty * (3.0/20.0) #5 -> 2
+
 
 func appear():
 	if current_state == State.PRESENT or GameManager.is_dead:
 		return
+	if GameManager.man_active or GameManager.eyes_closed:
+		return
+		
 	current_state = State.PRESENT
 	jumpscareTimer.start()
 	visible = true
@@ -54,6 +62,7 @@ func is_present() -> bool:
 	return current_state == State.PRESENT
 
 func compute_action() -> void:
+	print("test")
 	var x = randf_range(0,1)
 	if x <= actionChance:
 		appear()
@@ -63,7 +72,4 @@ func jumpscare() -> void:
 	if GameManager.is_dead or current_state == State.HIDDEN or blocked:
 		return
 	jumpscared.emit()
-
-
-func _on_action_timer_timeout() -> void:
-	pass # Replace with function body.
+	

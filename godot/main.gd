@@ -5,14 +5,12 @@ extends Node3D
 @onready var sleepy_label = $SleepyMeter
 @onready var tv = $TV
 @onready var jumpscare_sound = $JumpscareSound
-@onready var saul_sound = $SaulSound
-@onready var close_nekoarc = $CloseNekoArc
 @onready var man_monster = $Man
 @onready var ghost_monster = $Ghost
 
 func _ready():
 	GameManager.reset()
-	set_difficulty()
+	set_difficulty(20,1,1)
 	connect_tv_signals()
 	connect_monster_signals()
 	connect_ghost_signals()
@@ -20,10 +18,12 @@ func _ready():
 	tv.turn_on()
 
 func set_difficulty(ghost_diff = 1, man_diff = 1, tv_diff = 1):
-	#$Ghost.
-	
-	pass
-	
+	ghost_diff = clamp(ghost_diff,0,20)
+	man_diff = clamp(man_diff,0,20)
+	tv_diff = clamp(tv_diff,0,20)
+	$Ghost.set_difficulty(ghost_diff)
+	$Man.set_difficulty(man_diff)
+	$TV.set_difficulty(tv_diff)	
 
 func connect_tv_signals():
 	tv.became_corrupted.connect(_on_tv_corrupted)
@@ -47,6 +47,7 @@ func connect_game_signals():
 	GameManager.game_over.connect(_on_game_over)
 
 func _process(delta):
+	
 	if GameManager.is_dead:
 		return
 
@@ -138,8 +139,6 @@ func trigger_jumpscare():
 	GameManager.die()
 	$jumpscareTimer.start()
 
-func _on_jumpscare_timer_timeout():
-	close_nekoarc.visible = false
 
 func _on_action_timer_timeout():
 	if GameManager.is_dead:

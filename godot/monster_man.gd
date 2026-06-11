@@ -12,10 +12,9 @@ var actionChance = 1
 var suspicion: float = 0.0
 var turned_off_tv_once = false
 var suspicionMultiplier = 1
-var internal_difficulty = 1
+var initialSuspicion = 1
 
 @onready var actionTimer = $actionTimer
-@onready var leaveTimer = $leaveTimer
 @onready var door_enter_sound = $"../DoorEnter"
 @onready var door_exit_sound = $"../DoorExit"
 
@@ -26,7 +25,7 @@ signal turned_off_tv()
 
 func _ready():
 	visible = false
-	set_difficulty(20)
+	set_difficulty()
 	actionTimer.start()
 
 func _process(delta):
@@ -51,15 +50,16 @@ func _process(delta):
 		turned_off_tv.emit()
 
 func set_difficulty(difficulty = 1.0):
-	internal_difficulty = difficulty
+	initialSuspicion = 0.3 * (1.0+difficulty/20)
 	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
+	actionTimer.start()
 	actionChance = 0.5 + difficulty/40.0 #50% -> 100%
 	suspicionMultiplier = 1.0+difficulty/20 #1->2
 
 func appear():
 	if current_state == State.PRESENT or GameManager.is_dead:
 		return
-	suspicion = max_suspicion * 0.3 * (1.0+internal_difficulty/20.0                ) 
+	suspicion = max_suspicion * initialSuspicion
 	current_state = State.PRESENT
 	visible = true
 	door_enter_sound.playing = true
