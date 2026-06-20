@@ -19,6 +19,7 @@ var actionChance = 1
 @onready var tv_off_sound = $"../TVOff"
 @onready var actionTimer = $actionTimer
 @onready var jumpscareTimer = $jumpscareTimer
+@onready var TV_enemy_model = $TV_enemy_model
 
 var safe_mat = preload("res://assets/materials/safeTV.tres")
 var danger_mat = preload("res://assets/materials/dangerTV.tres")
@@ -31,6 +32,7 @@ signal jumpscared()
 func _ready():
 	material_override = null
 	visible = false 
+	TV_enemy_model.visible = false
 	actionTimer.start()
 	jumpscareTimer.stop()
 	set_difficulty()
@@ -92,6 +94,7 @@ func enter_corrupted():
 	flicker_length = randf() * 0.1
 
 func jumpscare() -> void:
+	TV_enemy_model.visible = true
 	jumpscared.emit()
 
 func is_on() -> bool:

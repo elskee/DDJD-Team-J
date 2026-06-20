@@ -6,13 +6,14 @@
 [ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://assets/materials/dangerTV.tres" id="6_4arys"]
 [ext_resource type="Script" uid="uid://b3o1eg7hoi6hm" path="res://monster_ghost.gd" id="6_6iypd"]
 [ext_resource type="AudioStream" uid="uid://bwolal58mg858" path="res://assets/audio/7_jumpscareidea.mp3" id="6_jsk3o"]
-[ext_resource type="Texture2D" uid="uid://8j7sp6ysynm6" path="res://assets/images/ghost.png" id="6_tereu"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="Texture2D" uid="uid://cld8tkhyoyti3" path="res://assets/images/ghost2.png" id="7_wlxy5"]
 [ext_resource type="AudioStream" uid="uid://bam4nwvjyc0el" path="res://assets/audio/1_open_door.mp3" id="9_imku0"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
 [ext_resource type="AudioStream" uid="uid://chehnchpp24kp" path="res://assets/audio/2_close_door.mp3" id="10_wlxy5"]
 [ext_resource type="AudioStream" uid="uid://fypnkcctchhs" path="res://assets/audio/3_tv_on.mp3" id="11_3v7ru"]
 [ext_resource type="AudioStream" uid="uid://bkyle2ix83smj" path="res://assets/audio/3_tv_off_2.mp3" id="12_tcnuu"]
+[ext_resource type="PackedScene" uid="uid://bwix28nbbpw6m" path="res://tv_enemy_model.tscn" id="14_wlxy5"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -40,15 +41,22 @@ transparency = 1
 albedo_color = Color(3.8450508, 3.8450508, 3.8450508, 1)
 albedo_texture = SubResource("CompressedTexture2D_6iypd")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlxy5"]
+transparency = 1
+albedo_texture = ExtResource("4_jsk3o")
+roughness = 0.05
+
 [sub_resource type="QuadMesh" id="QuadMesh_imku0"]
+lightmap_size_hint = Vector2i(7, 7)
+material = SubResource("StandardMaterial3D_wlxy5")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
 transparency = 1
 albedo_texture = ExtResource("4_jsk3o")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imku0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v7ru"]
 transparency = 1
-albedo_texture = ExtResource("6_tereu")
+albedo_texture = ExtResource("7_wlxy5")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
 
@@ -67,6 +75,7 @@ near = 0.055
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
 transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 3.044545, 3.425144)
+visible = false
 material_override = SubResource("StandardMaterial3D_r3fl7")
 mesh = SubResource("QuadMesh_jka67")
 
@@ -97,6 +106,10 @@ omni_attenuation = 1.946
 
 [node name="jumpscareTimer" type="Timer" parent="TV" unique_id=1874536542]
 
+[node name="TV_enemy_model" parent="TV" unique_id=504133044 instance=ExtResource("14_wlxy5")]
+transform = Transform3D(1.9245011, -0.0968397, -1.106883, 0, 3.3206494, -0.29051912, 1.6666667, 0.25159696, 2.8757668, -0.4204909, -0.47750247, 3.7947326)
+visible = false
+
 [node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
 transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, -3.620524)
 visible = false
@@ -111,9 +124,15 @@ script = ExtResource("5_4arys")
 
 [node name="actionTimer" type="Timer" parent="Man" unique_id=1379425969]
 
+[node name="manJumpscare" type="MeshInstance3D" parent="Man" unique_id=60518944]
+transform = Transform3D(0.92050475, 0, -0.390731, 0, 0.9999997, 0, 0.390731, 0, 0.92050475, -0.09889293, -0.39961183, 1.6609396)
+visible = false
+material_override = SubResource("StandardMaterial3D_tereu")
+mesh = SubResource("QuadMesh_imku0")
+
 [node name="Ghost" type="MeshInstance3D" parent="." unique_id=489280104]
-transform = Transform3D(0.4678219, 0, -0.88382286, 0, 1, 0, 0.88382286, 0, 0.4678219, 1.1772101, 3.1524732, 1.2580055)
-material_override = SubResource("StandardMaterial3D_imku0")
+transform = Transform3D(0.58778524, 0, -0.809017, 0, 1, 0, 0.809017, 0, 0.58778524, -0.16728449, 3.2338471, 1.7660077)
+material_override = SubResource("StandardMaterial3D_3v7ru")
 mesh = SubResource("QuadMesh_wlxy5")
 script = ExtResource("6_6iypd")
 
@@ -121,9 +140,18 @@ script = ExtResource("6_6iypd")
 
 [node name="jumpscareTimer" type="Timer" parent="Ghost" unique_id=780300370]
 
+[node name="ghostJumpscare" type="MeshInstance3D" parent="Ghost" unique_id=2098382013]
+transform = Transform3D(0.8660251, 0.043577842, 0.49809724, 0, 0.9961944, -0.08715569, -0.49999988, 0.07547906, 0.8627293, -0.09521687, -0.37621665, 2.3580086)
+material_override = SubResource("StandardMaterial3D_3v7ru")
+mesh = SubResource("QuadMesh_wlxy5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Ghost" unique_id=188448143]
+transform = Transform3D(0.2, 0, -7.450581e-09, 0, 0.19999999, 0, 7.450581e-09, 0, 0.2, -0.04271972, 0.20422578, 0.25342107)
+omni_range = 1.497
+omni_attenuation = 0.866
+
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
 transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
-visible = false
 light_energy = 6.723
 spot_range = 1100.353
 spot_attenuation = 0.92

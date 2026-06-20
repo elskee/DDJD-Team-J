@@ -17,6 +17,7 @@ var initialSuspicion = 1
 @onready var actionTimer = $actionTimer
 @onready var door_enter_sound = $"../DoorEnter"
 @onready var door_exit_sound = $"../DoorExit"
+@onready var manJumpscare = $"manJumpscare"
 
 signal appeared()
 signal left()
@@ -27,6 +28,7 @@ func _ready():
 	visible = false
 	set_difficulty()
 	actionTimer.start()
+	manJumpscare.visible = false
 
 func _process(delta):
 	if GameManager.is_dead:
@@ -89,4 +91,5 @@ func compute_action() -> void:
 func jumpscare() -> void:
 	if GameManager.is_dead or current_state == State.HIDDEN or blocked:
 		return
+	manJumpscare.visible = true
 	jumpscared.emit()

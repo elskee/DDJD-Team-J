@@ -42,8 +42,3 @@ material_overlay = ExtResource("2_bisa2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28079176, 0.08991106, 0.15741321)
 material_override = ExtResource("2_bisa2")
 material_overlay = ExtResource("2_bisa2")
-
-[node name="Camera3D" type="Camera3D" parent="." index="21" unique_id=2080159668]
-transform = Transform3D(0.0969872, -0.0023349465, 0.02424935, 0, 0.09953963, 0.009584575, -0.024361504, -0.009295811, 0.0965407, 0.111369304, 0.15435302, 0.31986785)
-fov = 74.35969
-near = 0.055

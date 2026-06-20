@@ -11,6 +11,7 @@ var actionChance = 1
 
 @onready var actionTimer = $actionTimer
 @onready var jumpscareTimer = $jumpscareTimer
+@onready var ghostJumpscare = $ghostJumpscare
 
 signal appeared()
 signal left()
@@ -20,6 +21,7 @@ func _ready():
 	visible = false
 	set_difficulty()
 	actionTimer.start()
+	ghostJumpscare.visible = false
 
 func _process(delta):
 	print(str(actionTimer.time_left))
@@ -71,5 +73,6 @@ func compute_action() -> void:
 func jumpscare() -> void:
 	if GameManager.is_dead or current_state == State.HIDDEN or blocked:
 		return
+	ghostJumpscare.visible = true
 	jumpscared.emit()
 	

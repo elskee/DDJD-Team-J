@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bwix28nbbpw6m"]
+
+[ext_resource type="PackedScene" uid="uid://buaf6abns40ff" path="res://Grupo_J_creature (3).fbx" id="1_kbaet"]
+[ext_resource type="Texture2D" uid="uid://ciqwltskwjauu" path="res://assets/images/mascot.png" id="2_xqhc5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1b3e"]
+albedo_texture = ExtResource("2_xqhc5")
+
+[node name="TV_enemy_model" unique_id=504133044 instance=ExtResource("1_kbaet")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="polySurface39" parent="." index="44" unique_id=33055200]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.114567995, 0, 0)
+material_override = SubResource("StandardMaterial3D_m1b3e")
