@@ -127,6 +127,8 @@ func _on_level_complete():
 	GameManager.is_dead = true
 	print("Level %s complete - you fell asleep!" % GameManager.current_level)
 	sleepy_label.text = "YOU FELL ASLEEP!"
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://menus/level_complete.tscn")
 
 func trigger_jumpscare():
 	#close_nekoarc.visible = true
@@ -139,6 +141,8 @@ func trigger_jumpscare():
 
 func _on_jumpscare_timer_timeout():
 	close_nekoarc.visible = false
+	await get_tree().create_timer(0.5).timeout
+	get_tree().change_scene_to_file("res://menus/game_over.tscn")
 
 func _on_action_timer_timeout():
 	if GameManager.is_dead:
