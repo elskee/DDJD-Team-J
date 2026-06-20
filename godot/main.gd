@@ -10,7 +10,7 @@ extends Node3D
 
 func _ready():
 	GameManager.reset()
-	set_difficulty(20,1,1)
+	set_difficulty(1,1,20)
 	connect_tv_signals()
 	connect_monster_signals()
 	connect_ghost_signals()
@@ -133,7 +133,7 @@ func _on_level_complete():
 	get_tree().change_scene_to_file("res://menus/level_complete.tscn")
 
 func trigger_jumpscare():
-	#close_nekoarc.visible = true
+
 	eyelid.visible = false
 	flashlight_node.visible = true
 	if GameManager.is_dead != true:
@@ -143,7 +143,6 @@ func trigger_jumpscare():
 	$jumpscareTimer.start()
 
 func _on_jumpscare_timer_timeout():
-	close_nekoarc.visible = false
 	await get_tree().create_timer(0.5).timeout
 	get_tree().change_scene_to_file("res://menus/game_over.tscn")
 
