@@ -5,24 +5,25 @@ extends Node3D
 @onready var sleepy_label = $SleepyMeter
 @onready var tv = $TV
 @onready var jumpscare_sound = $JumpscareSound
-@onready var saul_sound = $SaulSound
-@onready var close_nekoarc = $CloseNekoArc
 @onready var man_monster = $Man
 @onready var ghost_monster = $Ghost
 
 func _ready():
 	GameManager.reset()
-	set_difficulty()
+	set_difficulty(20,1,1)
 	connect_tv_signals()
 	connect_monster_signals()
+	connect_ghost_signals()
 	connect_game_signals()
 	tv.turn_on()
 
 func set_difficulty(ghost_diff = 1, man_diff = 1, tv_diff = 1):
-	#$Ghost.
-	
-	pass
-	
+	ghost_diff = clamp(ghost_diff,0,20)
+	man_diff = clamp(man_diff,0,20)
+	tv_diff = clamp(tv_diff,0,20)
+	$Ghost.set_difficulty(ghost_diff)
+	$Man.set_difficulty(man_diff)
+	$TV.set_difficulty(tv_diff)	
 
 func connect_tv_signals():
 	tv.became_corrupted.connect(_on_tv_corrupted)
@@ -35,7 +36,8 @@ func connect_monster_signals():
 	man_monster.left.connect(_on_man_left)
 	man_monster.turned_off_tv.connect(_on_man_turned_off_tv)
 	man_monster.jumpscared.connect(_on_monster_jumpscare)
-
+	
+func connect_ghost_signals():
 	ghost_monster.appeared.connect(_on_ghost_appeared)
 	ghost_monster.left.connect(_on_ghost_left)
 	ghost_monster.jumpscared.connect(_on_monster_jumpscare)
@@ -45,6 +47,7 @@ func connect_game_signals():
 	GameManager.game_over.connect(_on_game_over)
 
 func _process(delta):
+	
 	if GameManager.is_dead:
 		return
 
@@ -97,16 +100,15 @@ func _on_tv_jumpscare():
 func _on_man_appeared():
 	ghost_monster.blocked = true
 	if ghost_monster.is_present():
-		ghost_monster.force_leave()
+		ghost_monster.leave()
 	print("MAN appeared - door creaks")
 
 func _on_man_left():
 	ghost_monster.blocked = false
-	ghost_monster.randomize_appear_time()
 	print("MAN left")
 
 func _on_man_turned_off_tv():
-	tv.turn_off()
+	tv.turn_off()      
 	print("MAN turned off the TV")
 
 func _on_monster_jumpscare():
@@ -133,6 +135,7 @@ func _on_level_complete():
 func trigger_jumpscare():
 	#close_nekoarc.visible = true
 	eyelid.visible = false
+	flashlight_node.visible = true
 	if GameManager.is_dead != true:
 		jumpscare_sound.play()
 	GameManager.is_dead = true

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ixxhchtno0r1"]
+
+[ext_resource type="PackedScene" uid="uid://buaf6abns40ff" path="res://Grupo_J_creature (3).fbx" id="1_4rmpa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4rmpa"]
+albedo_color = Color(0.16078432, 0, 0.17254902, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p522h"]
+material = SubResource("StandardMaterial3D_4rmpa")
+
+[node name="Node3D" type="Node3D" unique_id=1563929733]
+
+[node name="TV_enemy_model" parent="." unique_id=504133044 instance=ExtResource("1_4rmpa")]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, -2.2683249, 3.2962747, 9.140891)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1840870849]
+transform = Transform3D(100, 0, 0, 0, 0, -100, 0, 0, -4.371139e-06, 0, 0, 0)
+mesh = SubResource("PlaneMesh_p522h")

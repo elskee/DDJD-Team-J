@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://32saxc7isthn"]
+
+[ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_noarx"]
+[ext_resource type="Texture2D" uid="uid://gq2huvvwhgp7" path="res://assets/images/man.png" id="4_jsk3o"]
+[ext_resource type="Script" uid="uid://cxmjq304ysetl" path="res://monster_man.gd" id="5_4arys"]
+[ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://assets/materials/dangerTV.tres" id="6_4arys"]
+[ext_resource type="Script" uid="uid://b3o1eg7hoi6hm" path="res://monster_ghost.gd" id="6_6iypd"]
+[ext_resource type="AudioStream" uid="uid://bwolal58mg858" path="res://assets/audio/7_jumpscareidea.mp3" id="6_jsk3o"]
+[ext_resource type="Texture2D" uid="uid://8j7sp6ysynm6" path="res://assets/images/ghost.png" id="6_tereu"]
+[ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="7_6iypd"]
+[ext_resource type="AudioStream" uid="uid://bam4nwvjyc0el" path="res://assets/audio/1_open_door.mp3" id="9_imku0"]
+[ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
+[ext_resource type="AudioStream" uid="uid://chehnchpp24kp" path="res://assets/audio/2_close_door.mp3" id="10_wlxy5"]
+[ext_resource type="AudioStream" uid="uid://fypnkcctchhs" path="res://assets/audio/3_tv_on.mp3" id="11_3v7ru"]
+[ext_resource type="AudioStream" uid="uid://bkyle2ix83smj" path="res://assets/audio/3_tv_off_2.mp3" id="12_tcnuu"]
+
+[sub_resource type="Environment" id="Environment_r3fl7"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+glow_enabled = true
+glow_intensity = 1.05
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.0122
+volumetric_fog_density = 1.0
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_anisotropy = 0.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jka67"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6iypd"]
+load_path = "res://.godot/imported/man.png-092256092d9d6123ce93678bdf1d415b.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
+transparency = 1
+albedo_color = Color(3.8450508, 3.8450508, 3.8450508, 1)
+albedo_texture = SubResource("CompressedTexture2D_6iypd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_imku0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
+transparency = 1
+albedo_texture = ExtResource("4_jsk3o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_imku0"]
+transparency = 1
+albedo_texture = ExtResource("6_tereu")
+
+[sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
+
+[node name="Node3D" type="Node3D" unique_id=576497279]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("1_noarx")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1666380395]
+environment = SubResource("Environment_r3fl7")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=814781945]
+transform = Transform3D(0.17891985, -0.007789448, -0.089033775, -4.542713e-10, 0.19923893, -0.017431153, 0.08937385, 0.015593894, 0.17823899, -2.4148395, 3.0036228, 3.4509676)
+cull_mask = 1047553
+fov = 60.0
+near = 0.055
+
+[node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
+transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 3.044545, 3.425144)
+material_override = SubResource("StandardMaterial3D_r3fl7")
+mesh = SubResource("QuadMesh_jka67")
+
+[node name="SleepyMeter" type="Label" parent="." unique_id=484902572]
+offset_left = 163.0
+offset_top = 33.0
+offset_right = 326.0
+offset_bottom = 128.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=197479472]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.95912, 3.5812237, 4.412452)
+omni_range = 2974.912
+omni_attenuation = 1.25
+
+[node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
+transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
+material_override = ExtResource("6_4arys")
+mesh = SubResource("QuadMesh_cdqbm")
+script = ExtResource("7_6iypd")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="TV" unique_id=1508721701]
+transform = Transform3D(0.044444446, 0, 0, 0, 0.06666667, 0, 0, 0, 0.06666667, 0, 0.20874536, 0.35088062)
+light_energy = 2.322
+omni_range = 68.144
+omni_attenuation = 1.946
+
+[node name="actionTimer" type="Timer" parent="TV" unique_id=679353730]
+
+[node name="jumpscareTimer" type="Timer" parent="TV" unique_id=1874536542]
+
+[node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
+transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, -3.620524)
+visible = false
+material_override = SubResource("StandardMaterial3D_cdqbm")
+mesh = SubResource("QuadMesh_imku0")
+
+[node name="Man" type="MeshInstance3D" parent="." unique_id=1541834509]
+transform = Transform3D(1.9454063, 0, -0.46410686, 0, 3, 0, 0.46410686, 0, 1.9454063, -1.2241234, 3.0316436, -0.0015725136)
+material_override = SubResource("StandardMaterial3D_tereu")
+mesh = SubResource("QuadMesh_imku0")
+script = ExtResource("5_4arys")
+max_suspicion = null
+appear_delay_min = null
+appear_delay_max = null
+tv_off_delay = null
+
+[node name="actionTimer" type="Timer" parent="Man" unique_id=1379425969]
+
+[node name="leaveTimer" type="Timer" parent="Man" unique_id=444096615]
+
+[node name="Ghost" type="MeshInstance3D" parent="." unique_id=489280104]
+transform = Transform3D(0.4678219, 0, -0.88382286, 0, 1, 0, 0.88382286, 0, 0.4678219, 1.1772101, 3.1524732, 1.2580055)
+material_override = SubResource("StandardMaterial3D_imku0")
+mesh = SubResource("QuadMesh_wlxy5")
+script = ExtResource("6_6iypd")
+
+[node name="actionTimer" type="Timer" parent="Ghost" unique_id=1574103185]
+
+[node name="jumpscareTimer" type="Timer" parent="Ghost" unique_id=780300370]
+
+[node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
+transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
+visible = false
+light_energy = 6.723
+spot_range = 1100.353
+spot_attenuation = 0.92
+spot_angle = 56.5
+
+[node name="actionTimer" type="Timer" parent="." unique_id=1359930145]
+wait_time = 2.0
+autostart = true
+
+[node name="jumpscareTimer" type="Timer" parent="." unique_id=606595139]
+wait_time = 6.0
+
+[node name="JumpscareSound" type="AudioStreamPlayer3D" parent="." unique_id=1639069746]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+stream = ExtResource("6_jsk3o")
+volume_db = -0.234
+
+[node name="DoorEnter" type="AudioStreamPlayer3D" parent="." unique_id=1575176655]
+stream = ExtResource("9_imku0")
+volume_db = 13.0
+
+[node name="DoorExit" type="AudioStreamPlayer3D" parent="." unique_id=1430462700]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+stream = ExtResource("10_wlxy5")
+volume_db = 13.0
+
+[node name="TVOn" type="AudioStreamPlayer3D" parent="." unique_id=2037012126]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+stream = ExtResource("11_3v7ru")
+volume_db = 13.0
+
+[node name="TVOff" type="AudioStreamPlayer3D" parent="." unique_id=1268382377]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+stream = ExtResource("12_tcnuu")
+volume_db = 13.0
+
+[node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
+
+[connection signal="timeout" from="Ghost/actionTimer" to="Ghost" method="compute_action"]
+[connection signal="timeout" from="Ghost/jumpscareTimer" to="Ghost" method="jumpscare"]
+[connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
