@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://32saxc7isthn"]
 
 [ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_h6smj"]
-[ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://assets/materials/dangerTV.tres" id="2_v5j5c"]
+[ext_resource type="Material" uid="uid://csyk4upxlrhhu" path="res://assets/materials/offTV.tres" id="2_5pxul"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="3_5pxul"]
-[ext_resource type="PackedScene" uid="uid://bas6e3mree2dj" path="res://tv_enemy_model.tscn" id="4_fedht"]
+[ext_resource type="PackedScene" uid="uid://bwix28nbbpw6m" path="res://tv_enemy_model.tscn" id="4_fedht"]
 [ext_resource type="Texture2D" uid="uid://gq2huvvwhgp7" path="res://assets/images/man.png" id="5_4c15r"]
 [ext_resource type="Script" uid="uid://cxmjq304ysetl" path="res://monster_man.gd" id="6_ait7k"]
 [ext_resource type="Texture2D" uid="uid://cld8tkhyoyti3" path="res://assets/images/ghost2.png" id="7_42xju"]
@@ -14,6 +14,8 @@
 [ext_resource type="AudioStream" uid="uid://fypnkcctchhs" path="res://assets/audio/3_tv_on.mp3" id="12_fj6e6"]
 [ext_resource type="AudioStream" uid="uid://bkyle2ix83smj" path="res://assets/audio/3_tv_off_2.mp3" id="13_2h3vt"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="14_yjxuc"]
+[ext_resource type="Texture2D" uid="uid://cgif876hiju8l" path="res://assets/images/drawing2.png" id="15_5pxul"]
+[ext_resource type="Texture2D" uid="uid://2n8ef5lm12ub" path="res://assets/images/drawing1.png" id="16_fedht"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -52,6 +54,14 @@ albedo_texture = ExtResource("7_42xju")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4c15r"]
+albedo_texture = ExtResource("15_5pxul")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ait7k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42xju"]
+albedo_texture = ExtResource("16_fedht")
+
 [node name="Level" type="Node3D" unique_id=576497279]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_h6smj")
@@ -84,12 +94,12 @@ omni_attenuation = 1.25
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
 transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
-material_override = ExtResource("2_v5j5c")
+material_override = ExtResource("2_5pxul")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("3_5pxul")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="TV" unique_id=1508721701]
-transform = Transform3D(0.044444446, 0, 0, 0, 0.06666667, 0, 0, 0, 0.06666667, 0, 0.20874536, 0.35088062)
+transform = Transform3D(0.044444446, 0, 0, 0, 0.06666667, 0, 0, 0, 0.06666667, 0, -0.030620813, 0.4902227)
 light_energy = 2.322
 omni_range = 68.144
 omni_attenuation = 1.946
@@ -176,6 +186,16 @@ volume_db = 13.0
 
 [node name="Room3" parent="." unique_id=375120512 instance=ExtResource("14_yjxuc")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
+
+[node name="drawing1" type="MeshInstance3D" parent="." unique_id=628157123]
+transform = Transform3D(2.0337605, -0.06979899, 0, 0.07097721, 1.9975641, -0.069519795, 0.0024785788, 0.06975647, 1.9907866, -5.2938013, 3.715068, -8.837264)
+material_override = SubResource("StandardMaterial3D_4c15r")
+mesh = SubResource("QuadMesh_ait7k")
+
+[node name="drawing2" type="MeshInstance3D" parent="." unique_id=1266654446]
+transform = Transform3D(0.20545973, -0.0071748123, -0.9947028, 0.06979899, 1.9987819, 0, 1.9881938, -0.06942926, 0.10279248, 4.5, 3.5335236, 0)
+material_override = SubResource("StandardMaterial3D_42xju")
+mesh = SubResource("QuadMesh_ait7k")
 
 [connection signal="timeout" from="TV/actionTimer" to="TV" method="compute_action"]
 [connection signal="timeout" from="TV/jumpscareTimer" to="TV" method="jumpscare"]

@@ -24,6 +24,7 @@ var actionChance = 1
 
 var safe_mat = preload("res://assets/materials/safeTV.tres")
 var danger_mat = preload("res://assets/materials/dangerTV.tres")
+var off_mat = preload("res://assets/materials/offTV.tres")
 
 signal turned_on()
 signal turned_off()
@@ -69,6 +70,7 @@ func turn_on():
 		state = State.SAFE
 		corruption_progress = 0.0
 		visible = true
+		$OmniLight3D.visible = true
 		material_override = safe_mat
 		tv_on_sound.playing = true
 		turned_on.emit()
@@ -76,8 +78,8 @@ func turn_on():
 
 func turn_off():
 	state = State.OFF
-	visible = false
-	material_override = null
+	material_override = off_mat
+	$OmniLight3D.visible = false
 	corruption_progress = 0.0
 	corrupted_duration = 0.0
 	flickering = false
