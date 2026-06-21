@@ -24,6 +24,7 @@ var actionChance = 1
 
 var safe_mat = preload("res://assets/materials/safeTV.tres")
 var danger_mat = preload("res://assets/materials/dangerTV.tres")
+var off_mat = preload("res://assets/materials/offTV.tres")
 
 signal turned_on()
 signal turned_off()
@@ -76,7 +77,7 @@ func turn_on():
 
 func turn_off():
 	state = State.OFF
-	visible = false
+	material_override = off_mat
 	material_override = null
 	corruption_progress = 0.0
 	corrupted_duration = 0.0

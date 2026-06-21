@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://32saxc7isthn"]
 
 [ext_resource type="Script" uid="uid://bwcqf1u4fmaga" path="res://main.gd" id="1_h6smj"]
-[ext_resource type="Material" uid="uid://cqsupgcddnwmw" path="res://assets/materials/dangerTV.tres" id="2_v5j5c"]
+[ext_resource type="Material" uid="uid://csyk4upxlrhhu" path="res://assets/materials/offTV.tres" id="2_h6smj"]
 [ext_resource type="Script" uid="uid://b14udnef0cn2y" path="res://tv_controller.gd" id="3_5pxul"]
 [ext_resource type="PackedScene" uid="uid://bas6e3mree2dj" path="res://tv_enemy_model.tscn" id="4_fedht"]
 [ext_resource type="Texture2D" uid="uid://gq2huvvwhgp7" path="res://assets/images/man.png" id="5_4c15r"]
@@ -84,7 +84,7 @@ omni_attenuation = 1.25
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
 transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
-material_override = ExtResource("2_v5j5c")
+material_override = ExtResource("2_h6smj")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("3_5pxul")
 
