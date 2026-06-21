@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c8cda6d2-8693-43ba-bfec-c21460adb97c}">
+		<property name="assetPath">
+			<value>soundsfmod/flashlight/flash7.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.19736961451247165</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ab78bf0-b8b7-4155-ba90-169ab3d6718e}</destination>
+		</relationship>
+	</object>
+</objects>

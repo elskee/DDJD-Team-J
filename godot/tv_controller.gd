@@ -14,8 +14,13 @@ var can_turn_on: bool = true
 @export var jumpscare_after: float = 5.0
 @export var reset_off_time: float = 3.0
 
-@onready var tv_on_sound = $"../TVOn"
-@onready var tv_off_sound = $"../TVOff"
+const TV_ONOFF_GUID := "{739c189d-b668-494e-a4a7-d4d0d38bb503}"
+
+@onready var fmod_tv_hum = $FmodTvHum
+@onready var fmod_tv_onoff = $FmodTvOnOff
+
+var _tv_onoff_desc: FmodEventDescription
+var _tv_onoff_instance: FmodEvent
 
 var safe_mat = preload("res://assets/materials/safeTV.tres")
 var danger_mat = preload("res://assets/materials/dangerTV.tres")
@@ -56,7 +61,9 @@ func turn_on():
 		corruption_progress = 0.0
 		visible = true
 		material_override = safe_mat
-		tv_on_sound.playing = true
+		if fmod_tv_hum:
+			fmod_tv_hum.play()
+		_play_tv_onoff(0.0)
 		turned_on.emit()
 
 func turn_off():
@@ -66,10 +73,31 @@ func turn_off():
 	corruption_progress = 0.0
 	corrupted_duration = 0.0
 	flickering = false
+	if fmod_tv_hum:
+		fmod_tv_hum.stop()
+	_play_tv_onoff(1.0)
 	turned_off.emit()
-	tv_off_sound.playing = true
 	if not can_turn_on:
 		off_time = 0.0
+
+func _play_tv_onoff(param_value: float):
+	_ensure_tv_onoff_desc()
+	if _tv_onoff_desc == null:
+		return
+	if _tv_onoff_instance:
+		_tv_onoff_instance.release()
+	_tv_onoff_instance = FmodServer.create_event_instance_with_guid(_tv_onoff_desc.get_guid())
+	if _tv_onoff_instance:
+		if param_value != 0.0:
+			_tv_onoff_instance.set_parameter_by_name("TV_on_off", param_value)
+		_tv_onoff_instance.start()
+
+func _ensure_tv_onoff_desc():
+	if _tv_onoff_desc:
+		return
+	_tv_onoff_desc = FmodServer.get_event_from_guid(TV_ONOFF_GUID)
+	if _tv_onoff_desc == null:
+		_tv_onoff_desc = FmodServer.get_event("event:/TV(ONOFF)")
 
 func enter_corrupted():
 	state = State.CORRUPTED

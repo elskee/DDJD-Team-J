@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{aabcf4de-c36a-4e01-96c3-3c844ec53d18}">
+		<property name="assetPath">
+			<value>soundsfmod/TV/tvoff1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>96</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.33458333333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ab78bf0-b8b7-4155-ba90-169ab3d6718e}</destination>
+		</relationship>
+	</object>
+</objects>

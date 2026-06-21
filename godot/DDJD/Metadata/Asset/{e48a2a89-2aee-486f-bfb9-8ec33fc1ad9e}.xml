@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="EncodableAsset" id="{e48a2a89-2aee-486f-bfb9-8ec33fc1ad9e}">
+		<property name="assetPath">
+			<value>soundsfmod/puff/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ab78bf0-b8b7-4155-ba90-169ab3d6718e}</destination>
+		</relationship>
+	</object>
+</objects>

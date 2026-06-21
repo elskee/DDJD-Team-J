@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{0a2418bc-912d-47f9-8d10-956583320c3a}">
+		<property name="name">
+			<value>TV_on_off</value>
+		</property>
+		<relationship name="folder">
+			<destination>{2a053042-a51f-4e6f-b525-4b17acc33e4b}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{d2f2419e-7f8d-4c72-b01c-730f19b4ce2c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{d2f2419e-7f8d-4c72-b01c-730f19b4ce2c}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>ON</value>
+			<value>OFF</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

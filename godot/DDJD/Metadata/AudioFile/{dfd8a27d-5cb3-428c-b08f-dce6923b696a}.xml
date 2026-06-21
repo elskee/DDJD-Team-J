@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{dfd8a27d-5cb3-428c-b08f-dce6923b696a}">
+		<property name="assetPath">
+			<value>soundsfmod/puff/puff out of air2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.6997732426303855</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ab78bf0-b8b7-4155-ba90-169ab3d6718e}</destination>
+		</relationship>
+	</object>
+</objects>

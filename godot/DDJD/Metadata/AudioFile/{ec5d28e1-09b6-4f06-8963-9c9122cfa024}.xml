@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{ec5d28e1-09b6-4f06-8963-9c9122cfa024}">
+		<property name="assetPath">
+			<value>soundsfmod/TV/tv_distorcion.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>13.125125000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{7ab78bf0-b8b7-4155-ba90-169ab3d6718e}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://duynyrjfc62k3"
+path="res://.godot/imported/som ambiente.mp3-10dad1d35de3b5ee3839b134ff4d6204.mp3str"
+
+[deps]
+
+source_file="res://DDJD/Assets/soundsfmod/som ambiente.mp3"
+dest_files=["res://.godot/imported/som ambiente.mp3-10dad1d35de3b5ee3839b134ff4d6204.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Fmod]
+
+General/banks_path="res://FmodBank/Desktop"
+
 [application]
 
 config/name="Insomnia"
@@ -17,10 +21,15 @@ config/features=PackedStringArray("4.6", "Mobile")
 [autoload]
 
 GameManager="*res://game_manager.gd"
+FmodManager="*uid://cds10pm7hwn3p"
 
 [display]
 
 window/size/borderless=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [input]
 

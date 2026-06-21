@@ -15,6 +15,11 @@ var actionChance = 1
 
 @onready var actionTimer = $actionTimer
 @onready var jumpscareTimer = $jumpscareTimer
+@onready var fmod_ghost_entry = $FmodGhostEntry
+@onready var fmod_ghost_out = $FmodGhostOut
+
+var _ghost_out_instance: FmodEvent
+const GHOST_OUT_GUID := "{f350a4aa-b56c-4416-965c-03f9e9bd360f}"
 
 signal appeared()
 signal left()
@@ -60,7 +65,18 @@ func appear():
 	current_state = State.PRESENT
 	time_present = 0.0
 	visible = true
+	fmod_ghost_entry.play()
 	appeared.emit()
+
+func _ensure_ghost_out_instance():
+	if _ghost_out_instance:
+		return
+	var desc = FmodServer.get_event_from_guid(GHOST_OUT_GUID)
+	if desc == null:
+		desc = FmodServer.get_event("event:/Ghost_out")
+	if desc == null:
+		return
+	_ghost_out_instance = FmodServer.create_event_instance_with_guid(desc.get_guid())
 
 func leave():
 	current_state = State.HIDDEN

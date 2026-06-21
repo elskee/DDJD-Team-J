@@ -11,8 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bam4nwvjyc0el" path="res://assets/audio/1_open_door.mp3" id="9_imku0"]
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="10_6iypd"]
 [ext_resource type="AudioStream" uid="uid://chehnchpp24kp" path="res://assets/audio/2_close_door.mp3" id="10_wlxy5"]
-[ext_resource type="AudioStream" uid="uid://fypnkcctchhs" path="res://assets/audio/3_tv_on.mp3" id="11_3v7ru"]
-[ext_resource type="AudioStream" uid="uid://bkyle2ix83smj" path="res://assets/audio/3_tv_off_2.mp3" id="12_tcnuu"]
+[ext_resource type="Script" uid="uid://wpqmsprww5lv" path="res://monster_final.gd" id="13"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -33,7 +32,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6iypd"]
-load_path = "res://.godot/imported/man.png-092256092d9d6123ce93678bdf1d415b.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdqbm"]
 transparency = 1
@@ -52,6 +50,11 @@ albedo_texture = ExtResource("6_tereu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wlxy5"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn"]
+albedo_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_fn"]
+
 [node name="Node3D" type="Node3D" unique_id=576497279]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_noarx")
@@ -64,6 +67,8 @@ transform = Transform3D(0.17891985, -0.007789448, -0.089033775, -4.542713e-10, 0
 cull_mask = 1047553
 fov = 60.0
 near = 0.055
+
+[node name="FmodListener3D" type="FmodListener3D" parent="Camera3D" unique_id=7606271]
 
 [node name="Eyelid" type="MeshInstance3D" parent="." unique_id=2098969087]
 transform = Transform3D(0.82412624, -0.098355405, -0.55780125, 5.9604646e-09, 0.9848076, -0.17364816, 0.5664062, 0.143108, 0.8116059, -2.2393084, 3.044545, 3.425144)
@@ -93,6 +98,23 @@ light_energy = 2.322
 omni_range = 68.144
 omni_attenuation = 1.946
 
+[node name="FmodTvHum" type="FmodEventEmitter3D" parent="TV" unique_id=1748807779]
+event_name = "event:/tV"
+event_guid = "{970531df-21e1-425d-9c84-25e68a065264}"
+volume = 0.3
+fmod_parameters/TV_MODE/id = 1936604473304404959
+fmod_parameters/TV_MODE = 0.0
+fmod_parameters/TV_MODE/variant_type = 3
+
+[node name="FmodTvOnOff" type="FmodEventEmitter3D" parent="TV" unique_id=1679371038]
+event_name = "event:/tV(ONOFF)"
+event_guid = "{739c189d-b668-494e-a4a7-d4d0d38bb503}"
+volume = 5.0
+fmod_parameters/TV_on_off/id = 682138208464335112
+fmod_parameters/TV_on_off = "ON"
+fmod_parameters/TV_on_off/labels = PackedStringArray("ON", "OFF")
+fmod_parameters/TV_on_off/variant_type = 4
+
 [node name="CloseNekoArc" type="MeshInstance3D" parent="." unique_id=2119141375]
 transform = Transform3D(2.57688, -0.40792838, -1.4809747, 0, 2.8922863, -0.79666847, 1.5361289, 0.6843062, 2.4843583, -0.7826859, 2.4949548, -3.620524)
 visible = false
@@ -115,6 +137,22 @@ script = ExtResource("6_6iypd")
 
 [node name="jumpscareTimer" type="Timer" parent="Ghost" unique_id=780300370]
 
+[node name="FmodGhostEntry" type="FmodEventEmitter3D" parent="Ghost" unique_id=56513234]
+event_name = "event:/Ghost_entry"
+event_guid = "{10af98b1-0c90-4353-a333-35813fa86acc}"
+
+[node name="FmodGhostOut" type="FmodEventEmitter3D" parent="Ghost" unique_id=1083487036]
+event_name = "event:/Ghost_out"
+event_guid = "{f350a4aa-b56c-4416-965c-03f9e9bd360f}"
+
+[node name="FinalMonster" type="Node3D" parent="." unique_id=1017652947]
+script = ExtResource("13")
+
+[node name="Mesh" type="MeshInstance3D" parent="FinalMonster" unique_id=736613450]
+visible = false
+material_override = SubResource("StandardMaterial3D_fn")
+mesh = SubResource("QuadMesh_fn")
+
 [node name="Flashlight" type="SpotLight3D" parent="." unique_id=2027989247]
 transform = Transform3D(0.1802154, -0.007709965, -0.08638846, 0, 0.19920823, -0.01777886, 0.08673182, 0.016020123, 0.17950195, -2.4927437, 3.5368714, 4.7013946)
 visible = false
@@ -122,6 +160,10 @@ light_energy = 6.723
 spot_range = 1100.353
 spot_attenuation = 0.92
 spot_angle = 56.5
+
+[node name="FmodLantern" type="FmodEventEmitter3D" parent="." unique_id=1323054619]
+event_name = "event:/Lantern"
+event_guid = "{61e283ee-2ad2-4a00-83b1-706b9f2b6c61}"
 
 [node name="actionTimer" type="Timer" parent="." unique_id=1359930145]
 wait_time = 2.0
@@ -144,18 +186,13 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 stream = ExtResource("10_wlxy5")
 volume_db = 13.0
 
-[node name="TVOn" type="AudioStreamPlayer3D" parent="." unique_id=2037012126]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-stream = ExtResource("11_3v7ru")
-volume_db = 13.0
-
-[node name="TVOff" type="AudioStreamPlayer3D" parent="." unique_id=1268382377]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
-stream = ExtResource("12_tcnuu")
-volume_db = 13.0
-
 [node name="Room3" parent="." unique_id=375120512 instance=ExtResource("10_6iypd")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -1.7354888, 1.360424, -2.1865654)
 
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1331015137]
+bank_paths = ["res://FmodBank/Desktop/Master.bank", "res://FmodBank/Desktop/Master.strings.bank"]
+
+[connection signal="phase_changed" from="FinalMonster" to="." method="_on_final_phase_changed"]
+[connection signal="time_up" from="FinalMonster" to="." method="_on_final_time_up"]
 [connection signal="timeout" from="actionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="timeout" from="jumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]

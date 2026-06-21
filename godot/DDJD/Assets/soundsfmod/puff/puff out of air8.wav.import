@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5utgaq6g7toy"
+path="res://.godot/imported/puff out of air8.wav-7ec5fc10042bcba13b5161903d3f5a37.sample"
+
+[deps]
+
+source_file="res://DDJD/Assets/soundsfmod/puff/puff out of air8.wav"
+dest_files=["res://.godot/imported/puff out of air8.wav-7ec5fc10042bcba13b5161903d3f5a37.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
