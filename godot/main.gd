@@ -8,14 +8,35 @@ extends Node3D
 @onready var man_monster = $Man
 @onready var ghost_monster = $Ghost
 
+@onready var selected_level = 6
+@onready var latest_max_level = 1
+@onready var max_level = 1
+
 func _ready():
 	GameManager.reset()
-	set_difficulty(1,1,20)
+	load_saved_data()
+	#set_selected_level(1)
+	choose_difficulty(selected_level)
 	connect_tv_signals()
 	connect_monster_signals()
 	connect_ghost_signals()
 	connect_game_signals()
 	tv.turn_on()
+
+func choose_difficulty(level = 1):
+	match level:
+		1:
+			set_difficulty(0,0,3)
+		2:
+			set_difficulty(3,0,5)
+		3:
+			set_difficulty(7,5,0)
+		4:
+			set_difficulty(3,15,3)
+		5:
+			set_difficulty(15,10,15)
+		6:
+			set_difficulty(20,20,20)
 
 func set_difficulty(ghost_diff = 1, man_diff = 1, tv_diff = 1):
 	ghost_diff = clamp(ghost_diff,0,20)
@@ -45,6 +66,69 @@ func connect_ghost_signals():
 func connect_game_signals():
 	GameManager.sleepiness_updated.connect(_on_sleepiness_updated)
 	GameManager.game_over.connect(_on_game_over)
+
+func reset_latest():
+	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
+	selected_level = file.get_var()
+	latest_max_level = file.get_var()
+	max_level = file.get_var()
+	
+	selected_level = 1
+	latest_max_level = 1
+	
+	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+	
+	file.store_var(selected_level)
+	file.store_var(latest_max_level)
+	file.store_var(max_level)
+	
+func set_selected_level(selected = 1):
+	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
+	selected_level = file.get_var()
+	latest_max_level = file.get_var()
+	max_level = file.get_var()
+	
+	selected_level = selected
+		
+	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+	
+	file.store_var(selected_level)
+	file.store_var(latest_max_level)
+	file.store_var(max_level)
+
+func increment_latest():
+	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
+	selected_level = file.get_var()
+	latest_max_level = file.get_var()
+	max_level = file.get_var()
+	
+	if selected_level == latest_max_level:
+		latest_max_level += 1
+	if max_level < latest_max_level:
+		latest_max_level=max_level
+		
+	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+	
+	file.store_var(selected_level)
+	file.store_var(latest_max_level)
+	file.store_var(max_level)
+	
+func load_saved_data():
+	var read_file = FileAccess.open("user://savegame.save",FileAccess.READ)
+	selected_level = read_file.get_var()
+	latest_max_level = read_file.get_var()
+	max_level = read_file.get_var()
+	
+	if selected_level == null:
+		print("RESETING SAVED VALUES")
+		var write_file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+		selected_level = 1
+		latest_max_level = 1
+		max_level = 1
+		
+		write_file.store_var(selected_level)
+		write_file.store_var(latest_max_level)
+		write_file.store_var(max_level)
 
 func _process(delta):
 	
