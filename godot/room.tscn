@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bu4x2j7gf0knl" path="res://quarto_J (3).fbx" id="1_88gup"]
 [ext_resource type="Material" uid="uid://co0eiu1dyxill" path="res://assets/materials/new_standard_material_3d.tres" id="2_bisa2"]
+[ext_resource type="Material" uid="uid://cvyjy87rlg120" path="res://assets/materials/bed.tres" id="2_v5vuv"]
+[ext_resource type="Material" uid="uid://bi5il0taabqjc" path="res://assets/materials/offWhite.tres" id="3_4o3f6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cke6"]
 resource_name = "openPBR_shader1"
@@ -43,25 +45,25 @@ shadow_mesh = SubResource("ArrayMesh_7to4b")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 
 [node name="pCube4" parent="." index="0" unique_id=2145186679]
-material_override = ExtResource("2_bisa2")
-material_overlay = ExtResource("2_bisa2")
+material_override = ExtResource("2_v5vuv")
+material_overlay = ExtResource("2_v5vuv")
 
 [node name="polySurface2" parent="pCube5" parent_id_path=PackedInt32Array(2132845946) index="0" unique_id=973565349]
 material_override = ExtResource("2_bisa2")
 material_overlay = ExtResource("2_bisa2")
 
 [node name="polySurface3" parent="pCube5" parent_id_path=PackedInt32Array(2132845946) index="1" unique_id=583083711]
-material_override = ExtResource("2_bisa2")
+material_override = ExtResource("3_4o3f6")
 material_overlay = ExtResource("2_bisa2")
 
 [node name="polySurface4" type="MeshInstance3D" parent="pCube5" parent_id_path=PackedInt32Array(2132845946) index="3" unique_id=1251434114]
 transform = Transform3D(-0.99999434, 0.0034033305, 0, -0.0034033312, -0.99999386, 0, 0, 0, 1, 0, 0.21809807, 0)
-material_override = ExtResource("2_bisa2")
+material_override = ExtResource("3_4o3f6")
 material_overlay = ExtResource("2_bisa2")
 mesh = SubResource("ArrayMesh_6xyuo")
 
 [node name="pCube6" parent="." index="2" unique_id=1584596972]
-material_override = ExtResource("2_bisa2")
+material_override = ExtResource("3_4o3f6")
 material_overlay = ExtResource("2_bisa2")
 
 [node name="pCube7" parent="." index="3" unique_id=1734391009]
@@ -77,7 +79,7 @@ material_override = ExtResource("2_bisa2")
 material_overlay = ExtResource("2_bisa2")
 
 [node name="pPlane4" parent="." index="16" unique_id=1427071258]
-material_override = ExtResource("2_bisa2")
+material_override = ExtResource("3_4o3f6")
 material_overlay = ExtResource("2_bisa2")
 
 [node name="pSphere6" parent="." index="19" unique_id=1769767685]
