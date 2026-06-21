@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dy6rg1715r8b3" path="res://room.tscn" id="14_yjxuc"]
 [ext_resource type="Texture2D" uid="uid://cgif876hiju8l" path="res://assets/images/drawing2.png" id="15_5pxul"]
 [ext_resource type="Texture2D" uid="uid://2n8ef5lm12ub" path="res://assets/images/drawing1.png" id="16_fedht"]
+[ext_resource type="Script" uid="uid://wpqmsprww5lv" path="res://monster_final.gd" id="17_mttad"]
+[ext_resource type="AudioStream" uid="uid://x1j60p5vjv7x" path="res://assets/audio/clock_tick.wav" id="18_bdedk"]
 
 [sub_resource type="Environment" id="Environment_r3fl7"]
 background_energy_multiplier = 0.0
@@ -196,6 +198,16 @@ mesh = SubResource("QuadMesh_ait7k")
 transform = Transform3D(0.20545973, -0.0071748123, -0.9947028, 0.06979899, 1.9987819, 0, 1.9881938, -0.06942926, 0.10279248, 4.5, 3.5335236, 0)
 material_override = SubResource("StandardMaterial3D_42xju")
 mesh = SubResource("QuadMesh_ait7k")
+
+[node name="FinalMonster" type="Node3D" parent="."]
+script = ExtResource("17_mttad")
+
+[node name="Mesh" type="MeshInstance3D" parent="FinalMonster"]
+visible = false
+
+[node name="TickPlayer" type="AudioStreamPlayer3D" parent="FinalMonster"]
+stream = ExtResource("18_bdedk")
+volume_db = -5.0
 
 [connection signal="timeout" from="TV/actionTimer" to="TV" method="compute_action"]
 [connection signal="timeout" from="TV/jumpscareTimer" to="TV" method="jumpscare"]
