@@ -12,11 +12,17 @@ extends Node3D
 @onready var latest_max_level = 1
 @onready var max_level = 1
 
+var manDifficulty = 0
+var ghostDifficulty = 0
+var tvDifficulty = 0
+
 func _ready():
 	GameManager.reset()
-	load_saved_data()
-	#set_selected_level(1)
+	load_data()
 	choose_difficulty(selected_level)
+	print(selected_level)
+	print(latest_max_level)
+	print(max_level)
 	connect_tv_signals()
 	connect_monster_signals()
 	connect_ghost_signals()
@@ -25,6 +31,9 @@ func _ready():
 
 func choose_difficulty(level = 1):
 	match level:
+		-1:
+			load_difficulty()
+			set_difficulty(ghostDifficulty,manDifficulty,tvDifficulty)
 		1:
 			set_difficulty(0,0,3)
 		2:
@@ -67,69 +76,6 @@ func connect_game_signals():
 	GameManager.sleepiness_updated.connect(_on_sleepiness_updated)
 	GameManager.game_over.connect(_on_game_over)
 
-func reset_latest():
-	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
-	selected_level = file.get_var()
-	latest_max_level = file.get_var()
-	max_level = file.get_var()
-	
-	selected_level = 1
-	latest_max_level = 1
-	
-	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
-	
-	file.store_var(selected_level)
-	file.store_var(latest_max_level)
-	file.store_var(max_level)
-	
-func set_selected_level(selected = 1):
-	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
-	selected_level = file.get_var()
-	latest_max_level = file.get_var()
-	max_level = file.get_var()
-	
-	selected_level = selected
-		
-	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
-	
-	file.store_var(selected_level)
-	file.store_var(latest_max_level)
-	file.store_var(max_level)
-
-func increment_latest():
-	var file = FileAccess.open("user://savegame.save",FileAccess.READ)
-	selected_level = file.get_var()
-	latest_max_level = file.get_var()
-	max_level = file.get_var()
-	
-	if selected_level == latest_max_level:
-		latest_max_level += 1
-	if max_level < latest_max_level:
-		latest_max_level=max_level
-		
-	file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
-	
-	file.store_var(selected_level)
-	file.store_var(latest_max_level)
-	file.store_var(max_level)
-	
-func load_saved_data():
-	var read_file = FileAccess.open("user://savegame.save",FileAccess.READ)
-	selected_level = read_file.get_var()
-	latest_max_level = read_file.get_var()
-	max_level = read_file.get_var()
-	
-	if selected_level == null:
-		print("RESETING SAVED VALUES")
-		var write_file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
-		selected_level = 1
-		latest_max_level = 1
-		max_level = 1
-		
-		write_file.store_var(selected_level)
-		write_file.store_var(latest_max_level)
-		write_file.store_var(max_level)
-
 func _process(delta):
 	
 	if GameManager.is_dead:
@@ -153,9 +99,9 @@ func handle_input():
 
 func update_sleepiness(delta):
 	if GameManager.eyes_closed:
-		var rate = 2.0
-		if tv.is_safe():
-			rate += 1.0
+		var rate = 1.0
+		if tv.is_safe() and tv.is_on():
+			rate += 2.0
 		GameManager.sleepiness += rate * delta
 	else:
 		GameManager.sleepiness -= 1.0 * delta
@@ -238,3 +184,45 @@ func _on_action_timer_timeout():
 func _on_game_over():
 	sleepy_label.text = "GAME OVER"
 	print("Game Over!")
+
+
+func save_data():
+	var file = FileAccess.open("user://savegame.save",FileAccess.WRITE)
+	
+	file.store_var(selected_level)
+	file.store_var(latest_max_level)
+	file.store_var(max_level)
+	
+func load_data():
+	if FileAccess.file_exists("user://savegame.save"):
+		var file = FileAccess.open("user://savegame.save",FileAccess.READ)
+		selected_level = file.get_var()
+		latest_max_level = file.get_var()
+		max_level = file.get_var()
+	else:
+		print("no save game found, resetting data")
+		selected_level = 1
+		latest_max_level = 1
+		max_level = 1
+		save_data()
+		
+		
+func save_difficulty():
+	var file = FileAccess.open("user://difficulty.save",FileAccess.WRITE)
+	
+	file.store_var(manDifficulty)
+	file.store_var(ghostDifficulty)
+	file.store_var(tvDifficulty)
+	
+func load_difficulty():
+	if FileAccess.file_exists("user://difficulty.save"):
+		var file = FileAccess.open("user://difficulty.save",FileAccess.READ)
+		manDifficulty = file.get_var()
+		ghostDifficulty = file.get_var()
+		tvDifficulty = file.get_var()
+	else:
+		manDifficulty = 0
+		ghostDifficulty = 0
+		tvDifficulty = 0
+		save_difficulty()
+		

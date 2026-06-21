@@ -1,0 +1,212 @@
+[gd_scene format=3 uid="uid://ctbngcebo26fn"]
+
+[ext_resource type="Script" uid="uid://crkbtv6bxl4ym" path="res://menus/custom_night.gd" id="1_d23hu"]
+
+[sub_resource type="StyleBoxFlat" id="2"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 28.0
+content_margin_bottom = 14.0
+bg_color = Color(0.07, 0.07, 0.07, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="3"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 28.0
+content_margin_bottom = 14.0
+bg_color = Color(0.13, 0.04, 0.04, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.7, 0.1, 0.1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="MainMenu" type="CanvasLayer" unique_id=42708708]
+script = ExtResource("1_d23hu")
+
+[node name="BG" type="ColorRect" parent="." unique_id=2054526014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.02, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=695414797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=1574960166]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Center/VBox" unique_id=866493589]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "SELECT CUSTOM DIFFICULTY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="Center/VBox" unique_id=1070399676]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/VBox" unique_id=421067284]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Center/VBox/HBoxContainer" unique_id=154066977]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer" unique_id=1691718778]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "FATHER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/VBox/HBoxContainer/VBoxContainer" unique_id=664879302]
+layout_mode = 2
+
+[node name="FatherDown" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1030256747]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "<"
+
+[node name="FatherCounter" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1858409080]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FatherUp" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1270670022]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = ">"
+
+[node name="Spacer" type="Control" parent="Center/VBox/HBoxContainer" unique_id=566184185]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Center/VBox/HBoxContainer" unique_id=992245899]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer2" unique_id=2001605408]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "DEMON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/VBox/HBoxContainer/VBoxContainer2" unique_id=1657437879]
+layout_mode = 2
+
+[node name="DemonDown" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=455435787]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "<"
+
+[node name="DemonCounter" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=465354619]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DemonUp" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer2/HBoxContainer" unique_id=956088338]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = ">"
+
+[node name="Spacer2" type="Control" parent="Center/VBox/HBoxContainer" unique_id=892596897]
+custom_minimum_size = Vector2(60, 80)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Center/VBox/HBoxContainer" unique_id=236456942]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer3" unique_id=578800420]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "TV"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Center/VBox/HBoxContainer/VBoxContainer3" unique_id=820655394]
+layout_mode = 2
+
+[node name="TvDown" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer3/HBoxContainer" unique_id=266652613]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "<"
+
+[node name="TvCounter" type="Label" parent="Center/VBox/HBoxContainer/VBoxContainer3/HBoxContainer" unique_id=2141603968]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TvUp" type="Button" parent="Center/VBox/HBoxContainer/VBoxContainer3/HBoxContainer" unique_id=1366582477]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = ">"
+
+[node name="Spacer2" type="Control" parent="Center/VBox" unique_id=1804938533]
+custom_minimum_size = Vector2(60, 40)
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="Center/VBox" unique_id=718334733]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "START GAME"
+
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer/HBoxContainer/FatherDown" to="." method="_on_father_down_pressed"]
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer/HBoxContainer/FatherUp" to="." method="_on_father_up_pressed"]
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer2/HBoxContainer/DemonDown" to="." method="_on_demon_down_pressed"]
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer2/HBoxContainer/DemonUp" to="." method="_on_demon_up_pressed"]
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer3/HBoxContainer/TvDown" to="." method="_on_tv_down_pressed"]
+[connection signal="pressed" from="Center/VBox/HBoxContainer/VBoxContainer3/HBoxContainer/TvUp" to="." method="_on_tv_up_pressed"]
+[connection signal="pressed" from="Center/VBox/StartButton" to="." method="_on_start_button_pressed"]

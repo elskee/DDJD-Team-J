@@ -43,10 +43,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0.02, 0.02, 0.02, 1)
 
+[node name="EndingThankYou" type="Label" parent="." unique_id=1204676111]
+offset_left = -1.0
+offset_top = 480.0
+offset_right = 1144.0
+offset_bottom = 617.0
+theme_override_font_sizes/font_size = 48
+text = "YOU HAVE FINISHED THE FINAL NIGHT
+THANK YOU FOR PLAYING OUR GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Center" type="CenterContainer" parent="." unique_id=426624595]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -17.0
+offset_right = -1.0
+offset_bottom = -17.0
 grow_horizontal = 2
 grow_vertical = 2
 

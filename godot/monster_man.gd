@@ -3,6 +3,7 @@ extends Node3D
 enum State { HIDDEN, PRESENT }
 var max_suspicion: float = 100.0
 
+var is_disabled = false
 var current_state: State = State.HIDDEN
 var time_present: float = 0.0
 var appear_timer: float = 0.0
@@ -52,6 +53,10 @@ func _process(delta):
 		turned_off_tv.emit()
 
 func set_difficulty(difficulty = 1.0):
+	if difficulty == 0:
+		is_disabled = true
+	else:
+		is_disabled = false
 	initialSuspicion = 0.3 * (1.0+difficulty/20)
 	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
 	actionTimer.start()
@@ -59,7 +64,7 @@ func set_difficulty(difficulty = 1.0):
 	suspicionMultiplier = 1.0+difficulty/20 #1->2
 
 func appear():
-	if current_state == State.PRESENT or GameManager.is_dead:
+	if current_state == State.PRESENT or GameManager.is_dead or is_disabled:
 		return
 	suspicion = max_suspicion * initialSuspicion
 	current_state = State.PRESENT

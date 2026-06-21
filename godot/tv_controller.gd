@@ -2,6 +2,7 @@ extends MeshInstance3D
 
 enum State { OFF, SAFE, CORRUPTED }
 
+var is_disabled = false
 var state: State = State.OFF
 var corruption_progress: float = 0.0
 var corrupted_duration: float = 0.0
@@ -49,6 +50,10 @@ func _process(delta):
 			material_override = danger_mat if flickering else safe_mat
 
 func set_difficulty(difficulty = 1.0):
+	if difficulty == 0:
+		is_disabled = true
+	else:
+		is_disabled = false
 	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
 	actionTimer.start()
 	jumpscareTimer.wait_time = 10 - (difficulty * 0.25) # 10 -> 5
@@ -82,6 +87,8 @@ func turn_off():
 	jumpscareTimer.stop()
 
 func enter_corrupted():
+	if is_disabled:
+		return
 	state = State.CORRUPTED
 	corrupted_duration = 0.0
 	flicker_cycle = 0.0

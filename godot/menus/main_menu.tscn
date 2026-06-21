@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvxddaphla8es"]
 
-[ext_resource type="Script" uid="uid://crkbtv6bxl4ym" path="res://menus/main_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://2rhbog8efcov" path="res://menus/main_menu.gd" id="1"]
 
 [sub_resource type="StyleBoxFlat" id="2"]
 content_margin_left = 28.0
@@ -72,7 +72,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="Center/VBox" unique_id=1270670022]
+[node name="NewGameButton" type="Button" parent="Center/VBox" unique_id=1270670022]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
@@ -80,7 +80,27 @@ theme_override_styles/normal = SubResource("2")
 theme_override_styles/pressed = SubResource("3")
 theme_override_styles/hover = SubResource("3")
 theme_override_styles/focus = SubResource("3")
-text = "START GAME"
+text = "NEW GAME"
+
+[node name="ContinueButton" type="Button" parent="Center/VBox" unique_id=646287609]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "CONTINUE"
+
+[node name="CustomNight" type="Button" parent="Center/VBox" unique_id=1991142435]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("3")
+theme_override_styles/hover = SubResource("3")
+theme_override_styles/focus = SubResource("3")
+text = "CUSTOM NIGHT"
 
 [node name="QuitButton" type="Button" parent="Center/VBox" unique_id=1030256747]
 custom_minimum_size = Vector2(300, 0)
@@ -92,5 +112,7 @@ theme_override_styles/hover = SubResource("3")
 theme_override_styles/focus = SubResource("3")
 text = "QUIT"
 
-[connection signal="pressed" from="Center/VBox/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Center/VBox/NewGameButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Center/VBox/ContinueButton" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="Center/VBox/CustomNight" to="." method="_on_custom_night_pressed"]
 [connection signal="pressed" from="Center/VBox/QuitButton" to="." method="_on_quit_pressed"]

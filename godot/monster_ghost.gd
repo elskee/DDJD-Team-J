@@ -2,6 +2,7 @@ extends Node3D
 
 enum State { HIDDEN, PRESENT }
 
+var is_disabled = false
 var current_state: State = State.HIDDEN
 var time_present: float = 0.0
 var appear_timer: float = 0.0
@@ -33,6 +34,10 @@ func _process(delta):
 		leave()
 
 func set_difficulty(difficulty = 1.0):
+	if difficulty == 0:
+		is_disabled = true
+	else:
+		is_disabled = false
 	actionTimer.wait_time = 15.0 - (difficulty * 0.5) #15 -> 5
 	actionTimer.start()
 	actionChance = 0.5 + difficulty/40.0 #50% -> 100%
@@ -40,7 +45,7 @@ func set_difficulty(difficulty = 1.0):
 
 
 func appear():
-	if current_state == State.PRESENT or GameManager.is_dead:
+	if current_state == State.PRESENT or GameManager.is_dead or is_disabled:
 		return
 	if GameManager.man_active or GameManager.eyes_closed:
 		return
