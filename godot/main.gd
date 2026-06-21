@@ -7,6 +7,7 @@ extends Node3D
 @onready var jumpscare_sound = $JumpscareSound
 @onready var man_monster = $Man
 @onready var ghost_monster = $Ghost
+@onready var final_monster = $FinalMonster
 
 @onready var selected_level = 6
 @onready var latest_max_level = 1
@@ -27,6 +28,7 @@ func _ready():
 	connect_monster_signals()
 	connect_ghost_signals()
 	connect_game_signals()
+	connect_final_monster_signals()
 	tv.turn_on()
 
 func choose_difficulty(level = 1):
@@ -150,6 +152,15 @@ func _on_ghost_appeared():
 
 func _on_ghost_left():
 	print("GHOST left")
+
+func connect_final_monster_signals():
+	final_monster.time_up.connect(_on_final_time_up)
+
+func _on_final_time_up():
+	if GameManager.is_dead:
+		return
+	trigger_jumpscare()
+	print("Final Monster timer expired!")
 
 func _on_sleepiness_updated(value, max_value):
 	if value >= max_value and not GameManager.is_dead:
