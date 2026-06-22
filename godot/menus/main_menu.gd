@@ -18,7 +18,7 @@ func _on_start_pressed():
 	latest_max_level = 0
 	save_data()
 	GameManager.reset()
-	get_tree().change_scene_to_file("res://level.tscn")
+	get_tree().change_scene_to_file("res://menus/tutorial.tscn")
 	
 
 func _on_continue_pressed() -> void:

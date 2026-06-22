@@ -3,9 +3,9 @@ extends Node3D
 enum Phase { TICKING, STUTTER, FINAL }
 
 var phase: Phase = Phase.TICKING
-var total_time: float = 3#00.0
+var total_time: float = 300.0
 var elapsed: float = 0.0
-var stutter_start: float = 2#40.0
+var stutter_start: float = 240.0
 var silence_before_end: float = 3.0
 
 var tick_timer: float = 0.0
