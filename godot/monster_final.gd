@@ -3,9 +3,9 @@ extends Node3D
 enum Phase { TICKING, STUTTER, FINAL }
 
 var phase: Phase = Phase.TICKING
-var total_time: float = 300.0
+var total_time: float = 3#00.0
 var elapsed: float = 0.0
-var stutter_start: float = 240.0
+var stutter_start: float = 2#40.0
 var silence_before_end: float = 3.0
 
 var tick_timer: float = 0.0
@@ -18,7 +18,7 @@ var pause_timer: float = 0.0
 signal phase_changed(new_phase: Phase)
 signal time_up()
 
-@onready var mesh_instance: MeshInstance3D = $Mesh
+@onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var tick_player: AudioStreamPlayer3D = $TickPlayer
 
 
@@ -68,6 +68,7 @@ func _process(delta):
 
 			if elapsed >= total_time:
 				phase = Phase.FINAL
+				mesh_instance.visible = true
 				time_up.emit()
 
 		Phase.FINAL:

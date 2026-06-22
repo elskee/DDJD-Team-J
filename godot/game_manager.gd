@@ -4,7 +4,6 @@ signal sleepiness_updated(value, max_value)
 signal eyes_changed(closed)
 signal flashlight_toggled(on)
 signal game_over()
-signal level_complete(level)
 
 var sleepiness: float = 0.0:
 	set(value):

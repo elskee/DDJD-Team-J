@@ -37,12 +37,6 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_cdqbm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ait7k"]
-transparency = 1
-albedo_color = Color(1.2904384, 0, 0, 0.34901962)
-
-[sub_resource type="QuadMesh" id="QuadMesh_42xju"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tereu"]
 transparency = 1
 albedo_texture = ExtResource("5_4c15r")
@@ -102,7 +96,6 @@ omni_attenuation = 1.25
 
 [node name="TV" type="MeshInstance3D" parent="." unique_id=1640415367]
 transform = Transform3D(4.5, 0, 0, 0, 3, 0, 0, 0, 3, -1.3387794, 3.8531368, -8.820872)
-visible = false
 material_override = ExtResource("2_5pxul")
 mesh = SubResource("QuadMesh_cdqbm")
 script = ExtResource("3_5pxul")
@@ -121,13 +114,12 @@ omni_attenuation = 1.946
 transform = Transform3D(1.9245011, -0.0968397, -1.106883, 0, 3.3206494, -0.29051912, 1.6666667, 0.25159696, 2.8757668, -0.4204909, -0.47750247, 3.7947326)
 
 [node name="FinalMonster" type="Node3D" parent="." unique_id=1613013510]
+visible = false
 script = ExtResource("17_mttad")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="FinalMonster" unique_id=1235621804]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3282511, 3.1877506, 3.3790796)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5951176, 0)
 visible = false
-material_override = SubResource("StandardMaterial3D_ait7k")
-mesh = SubResource("QuadMesh_42xju")
 
 [node name="TickPlayer" type="AudioStreamPlayer3D" parent="FinalMonster" unique_id=387404581]
 stream = ExtResource("18_bdedk")
