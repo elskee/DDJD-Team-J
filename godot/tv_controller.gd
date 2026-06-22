@@ -77,6 +77,8 @@ func turn_on():
 		actionTimer.start()
 
 func turn_off():
+	if state==State.OFF:
+		return
 	state = State.OFF
 	material_override = off_mat
 	$OmniLight3D.visible = false

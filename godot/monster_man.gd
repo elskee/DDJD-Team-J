@@ -48,8 +48,7 @@ func _process(delta):
 	if suspicion <= 0.0:
 		leave()
 
-	if not turned_off_tv_once and current_state == State.PRESENT:
-		turned_off_tv_once = true
+	if current_state == State.PRESENT:
 		turned_off_tv.emit()
 
 func set_difficulty(difficulty = 1.0):
